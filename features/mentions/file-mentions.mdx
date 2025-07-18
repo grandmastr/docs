@@ -1,0 +1,117 @@
+---
+title: "File Mentions"
+description: "Reference any file in your workspace with complete context and content"
+---
+
+File mentions let you reference any file in your workspace using `@/path/to/file` syntax. When you mention a file, Elastic sees the complete file content, including imports, related functions, and surrounding context.
+
+## How File Mentions Work
+
+When you type `@` in the chat input, Elastic shows you a searchable list of files in your workspace. You can:
+
+- **Browse files**: Navigate through your project structure
+- **Search files**: Type part of a filename to filter results
+- **Select files**: Click or use keyboard navigation to select files
+
+## Syntax
+
+```
+@/path/to/file.ext
+```
+
+Examples:
+- `@/src/components/Button.tsx`
+- `@/utils/helpers.js`
+- `@/README.md`
+- `@/package.json`
+
+## What Elastic Sees
+
+When you mention a file, Elastic receives:
+
+1. **Complete file content** - Every line of code, comments, and formatting
+2. **File path and name** - Full context of where the file lives
+3. **File type information** - Language-specific understanding
+4. **Import relationships** - Dependencies and connections to other files
+
+## Best Practices
+
+### When to Use File Mentions
+
+- **Code review**: `@/src/auth.js Can you review this authentication logic?`
+- **Bug investigation**: `@/components/Form.tsx This component is throwing errors`
+- **Feature requests**: `@/api/users.js Add pagination to this endpoint`
+- **Documentation**: `@/README.md Update the installation instructions`
+
+### Multiple File Mentions
+
+You can mention multiple files in a single message:
+
+```
+@/src/components/Button.tsx @/src/styles/button.css 
+The button styling isn't being applied correctly
+```
+
+### Combining with Other Mentions
+
+File mentions work great with other mention types:
+
+```
+@/src/api/auth.js @problems @terminal
+The authentication is failing and I'm seeing errors
+```
+
+## File Types Supported
+
+Elastic supports all file types in your workspace:
+
+- **Code files**: `.js`, `.ts`, `.py`, `.java`, `.cpp`, etc.
+- **Configuration**: `.json`, `.yaml`, `.toml`, `.ini`, etc.
+- **Documentation**: `.md`, `.txt`, `.rst`, etc.
+- **Styles**: `.css`, `.scss`, `.less`, etc.
+- **Data files**: `.csv`, `.xml`, `.sql`, etc.
+
+## Tips for Effective File Mentions
+
+1. **Be specific**: Mention the exact file you're asking about
+2. **Use relative paths**: Start from your project root
+3. **Include context**: Explain what you want to do with the file
+4. **Combine strategically**: Use with folder mentions for broader context
+5. **Check file size**: Very large files might be truncated in the response
+
+## Integration with Memory Bank
+
+File mentions integrate seamlessly with Elastic's Memory Bank:
+
+- **Pattern recognition**: Elastic learns your coding patterns from mentioned files
+- **Style consistency**: Maintains your coding style across similar files
+- **Architecture understanding**: Builds knowledge of your project structure
+- **Preference learning**: Remembers your preferred approaches and libraries
+
+## Common Use Cases
+
+### Code Analysis
+```
+@/src/utils/validation.js 
+Can you explain how this validation logic works?
+```
+
+### Bug Fixing
+```
+@/components/UserProfile.tsx 
+This component crashes when user data is null
+```
+
+### Feature Development
+```
+@/api/products.js 
+Add search functionality to this products API
+```
+
+### Refactoring
+```
+@/legacy/old-auth.js @/modern/new-auth.js 
+Help me migrate from the old auth system to the new one
+```
+
+File mentions are the foundation of precise, context-aware conversations with Elastic, enabling you to reference exactly what you're working on without copy-pasting code. 

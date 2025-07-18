@@ -1,0 +1,212 @@
+---
+title: Elastic Rules
+---
+
+Elastic Copilot provides a comprehensive project-specific configuration system that allows you to customize its behavior through special configuration files. This system helps you maintain consistent coding practices, capture project intelligence, and secure file access controls across your projects.
+
+## Overview
+
+The Elastic Rules system consists of three main components:
+
+<CardGroup cols={3}>
+  <Card title="Project Guidelines (.elasticguides)">
+    Project-specific instructions and guidelines that apply to all interactions
+  </Card>
+  <Card title="Learning Journal (.elasticrules)">
+    User-documented project intelligence and patterns for enhanced effectiveness
+  </Card>
+  <Card title="Access Control (.elasticignore)">
+    File and directory access restrictions for security and privacy
+  </Card>
+</CardGroup>
+
+## Project Guidelines (.elasticguides)
+
+The `.elasticguides` file allows you to provide project-specific instructions that Elastic Copilot will follow throughout all interactions with your project.
+
+### What to Include
+
+- **Coding Standards**: Style preferences, naming conventions, and formatting rules
+- **Architecture Guidelines**: Preferred patterns, design principles, and structural requirements
+- **Technology Preferences**: Specific libraries, frameworks, or tools to use or avoid
+- **Project Context**: Business logic, domain knowledge, and project-specific requirements
+- **Development Practices**: Testing approaches, documentation standards, and workflow preferences
+
+### Example .elasticguides File
+
+```
+# Project Guidelines
+
+## Coding Standards
+- Use TypeScript strict mode
+- Prefer functional programming patterns
+- Use meaningful variable names with camelCase
+- Maximum line length of 100 characters
+
+## Architecture
+- Follow clean architecture principles
+- Use dependency injection for services
+- Separate business logic from UI components
+- Implement proper error handling with custom error types
+
+## Technology Preferences
+- Use React with hooks (no class components)
+- Prefer Tailwind CSS for styling
+- Use Zustand for state management
+- Implement tests with Jest and React Testing Library
+
+## Project Context
+This is an e-commerce platform focused on sustainable products.
+Priority is on performance, accessibility, and mobile-first design.
+```
+
+## Learning Journal (.elasticrules)
+
+The `.elasticrules` file is where you document project-specific patterns, insights, and rules that you want Elastic Copilot to know about your project. This is your space to capture important project intelligence that isn't obvious from the code alone.
+
+### What You Should Document
+
+- **Critical Implementation Paths**: Key workflows and processes unique to your project
+- **Domain-Specific Patterns**: Business logic patterns and domain knowledge
+- **Performance Considerations**: Optimization strategies and performance-critical areas
+- **Integration Points**: External service integrations and API patterns
+- **Common Pitfalls**: Known issues and solutions specific to your project
+- **Team Decisions**: Coding style and architectural decisions made by your team
+
+### How to Use It
+
+Write down important insights about your project that you want Elastic Copilot to remember and apply:
+
+- Document recurring patterns in your codebase
+- Record successful solutions to complex problems
+- Note project-specific best practices
+- Capture important architectural decisions
+- Record domain knowledge and business rules
+
+### Example .elasticrules Content
+
+```
+# Project Intelligence Journal
+
+## Critical Patterns
+- Authentication flow uses JWT with refresh tokens stored in httpOnly cookies
+- All API calls go through the ApiClient wrapper with automatic retry logic
+- Database queries use the QueryBuilder pattern with automatic caching
+
+## Performance Notes
+- Product images are lazy-loaded using intersection observer
+- Search functionality is debounced with 300ms delay
+- Cart updates use optimistic UI updates with rollback on failure
+
+## Domain Knowledge
+- Order status transitions: pending → processing → shipped → delivered
+- Inventory is checked at both cart addition and checkout
+- Tax calculations vary by state and product category
+
+## Integration Points
+- Payment processing uses Stripe with webhook validation
+- Shipping rates fetched from ShipStation API
+- Email notifications sent via SendGrid templates
+
+## Team Decisions
+- We chose Zustand over Redux for simpler state management
+- All forms use react-hook-form with zod validation
+- Error boundaries are implemented at the page level
+```
+
+## Access Control (.elasticignore)
+
+The `.elasticignore` file controls which files and directories Elastic Copilot can access, helping you maintain security and privacy while working with your codebase.
+
+### What to Exclude
+
+- **Sensitive Configuration**: API keys, database credentials, and secrets
+- **Personal Information**: User data, private communications, and confidential files
+- **Large Binary Files**: Images, videos, and compiled assets that aren't relevant for code assistance
+- **Temporary Files**: Cache files, logs, and build artifacts
+- **Third-Party Code**: Dependencies and vendor files you don't want analyzed
+
+### Example .elasticignore File
+
+```
+# Sensitive files
+.env
+.env.local
+.env.production
+config/secrets.json
+private-keys/
+
+# User data and logs
+logs/
+*.log
+user-data/
+uploads/
+
+# Build artifacts and dependencies
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Database files
+*.db
+*.sqlite
+database/backups/
+
+# Large assets
+assets/videos/
+public/images/large/
+```
+
+## Setup Instructions
+
+### Creating Configuration Files
+
+1. **Create files in your project root**:
+   ```bash
+   touch .elasticguides
+   touch .elasticrules
+   touch .elasticignore
+   ```
+
+2. **Add your project guidelines** to `.elasticguides`
+3. **Configure access restrictions** in `.elasticignore`
+4. **Document your project patterns** in `.elasticrules`
+
+### File Locations
+
+All three files must be placed in your project's root directory:
+
+```
+your-project/
+├── .elasticguides    # Your project instructions
+├── .elasticrules     # Your project intelligence journal
+├── .elasticignore    # Access control rules
+├── src/
+└── package.json
+```
+
+### Best Practices
+
+- **Start Simple**: Begin with basic guidelines and expand over time
+- **Be Specific**: Provide concrete examples rather than vague instructions
+- **Regular Updates**: Review and update guidelines as your project evolves
+- **Team Alignment**: Ensure all team members contribute to and follow the guidelines
+- **Security First**: Always exclude sensitive files and credentials
+
+## Benefits
+
+- **Consistency**: Maintain uniform coding standards across your project
+- **Efficiency**: Reduce repetitive explanations and corrections
+- **Security**: Control access to sensitive files and directories
+- **Intelligence**: Build up project-specific knowledge that improves over time
+- **Team Collaboration**: Share project knowledge and standards with team members
+
+The Elastic Rules system grows smarter with your project, creating a more personalized and effective development experience tailored to your specific needs and preferences. 

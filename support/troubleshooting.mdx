@@ -1,0 +1,340 @@
+---
+title: Troubleshooting Guide
+description: Solutions for common Elastic Copilot issues and problems
+icon: life-ring
+---
+
+# Troubleshooting Guide
+
+This guide helps you resolve common issues with Elastic Copilot. If you can't find a solution here, contact our support team for assistance.
+
+## Quick Diagnostics
+
+<CardGroup cols={2}>
+  <Card title="Check Extension Status" icon="check-circle">
+    Verify Elastic Copilot is installed and enabled in VSCode Extensions panel
+  </Card>
+  <Card title="Test Connection" icon="wifi">
+    Send a simple message like "Hello" to verify AI connectivity
+  </Card>
+  <Card title="Review Settings" icon="gear">
+    Check authentication status and provider configuration
+  </Card>
+  <Card title="Restart VSCode" icon="refresh">
+    Many issues resolve with a simple restart
+  </Card>
+</CardGroup>
+
+## Installation Issues
+
+<AccordionGroup>
+  <Accordion title="Extension Not Installing">
+    **Symptoms**: Can't install from marketplace, installation fails
+    
+    **Solutions**:
+    1. **Check VSCode Version**: Ensure you're running VSCode 1.74.0 or newer
+    2. **Clear Extension Cache**: 
+       - Close VSCode
+       - Delete `~/.vscode/extensions` folder (backup first)
+       - Restart VSCode and try installing again
+    3. **Manual Installation**:
+       - Download `.vsix` file from releases
+       - Install via `Extensions: Install from VSIX` command
+    4. **Network Issues**:
+       - Check firewall settings
+       - Try different network connection
+       - Use corporate proxy settings if needed
+  </Accordion>
+  
+  <Accordion title="Extension Not Appearing">
+    **Symptoms**: Installed but no sidebar icon or commands
+    
+    **Solutions**:
+    1. **Reload VSCode**: `Ctrl+Shift+P` → "Developer: Reload Window"
+    2. **Check if Disabled**: Extensions panel → Search "Elastic Copilot" → Enable
+    3. **View Output**: `Ctrl+Shift+U` → Select "Elastic Copilot" from dropdown
+    4. **Check Dependencies**: Ensure Node.js is installed and accessible
+    5. **Reset Workspace**: Close workspace, restart VSCode, reopen project
+  </Accordion>
+  
+  <Accordion title="Permission Errors">
+    **Symptoms**: Access denied, permission errors during installation
+    
+    **Solutions**:
+    1. **Run as Administrator** (Windows) or use `sudo` (Mac/Linux) for global installation
+    2. **Check File Permissions**: Ensure write access to VSCode extensions directory
+    3. **Corporate Environment**: Contact IT for approval to install extensions
+    4. **Use Portable Version**: Install VSCode portable version if system-wide installation is blocked
+  </Accordion>
+</AccordionGroup>
+
+## Authentication Problems
+
+<AccordionGroup>
+  <Accordion title="Can't Sign In">
+    **Symptoms**: Sign-in fails, browser doesn't open, authentication errors
+    
+    **Solutions**:
+    1. **Try Incognito/Private Mode**: Open sign-in link in private browser window
+    2. **Clear Browser Cache**: Clear cookies and cache for elasticapp.io
+    3. **Disable Browser Extensions**: Temporarily disable ad blockers and security extensions
+    4. **Check Network**: Ensure ports 80, 443 are open; check firewall settings
+    5. **Manual Browser Sign-in**:
+       - Copy sign-in URL from VSCode
+       - Open manually in browser
+       - Complete authentication process
+  </Accordion>
+  
+  <Accordion title="API Key Issues">
+    **Symptoms**: "Invalid API key", "Unauthorized" errors
+    
+    **Solutions**:
+    1. **Verify API Key**: Copy-paste key carefully, check for extra spaces
+    2. **Check Key Permissions**: Ensure API key has necessary permissions
+    3. **Test Key Manually**: Use curl or Postman to test API key directly
+    4. **Regenerate Key**: Create new API key if original is compromised
+    5. **Check Quotas**: Verify you have remaining credits/quota with provider
+    
+    **Testing Commands**:
+    ```bash
+    # Test Anthropic API key
+    curl -H "x-api-key: YOUR_KEY" -H "Content-Type: application/json" \
+      https://api.anthropic.com/v1/messages
+    
+    # Test OpenAI API key  
+    curl -H "Authorization: Bearer YOUR_KEY" \
+      https://api.openai.com/v1/models
+    ```
+  </Accordion>
+  
+  <Accordion title="Subscription Problems">
+    **Symptoms**: "No active subscription", billing issues
+    
+    **Solutions**:
+    1. **Check Dashboard**: Visit real.elasticapp.io to verify subscription status
+    2. **Payment Method**: Update expired credit cards or payment methods
+    3. **Plan Limits**: Check if you've exceeded monthly usage limits
+    4. **Contact Support**: For billing disputes or payment issues
+    5. **Temporary Fallback**: Configure direct API providers while resolving subscription issues
+  </Accordion>
+</AccordionGroup>
+
+## Functionality Issues
+
+<AccordionGroup>
+  <Accordion title="AI Commands Not Working">
+    **Symptoms**: Keyboard shortcuts don't respond, commands not found
+    
+    **Solutions**:
+    1. **Check Keyboard Shortcuts**: `Ctrl+K Ctrl+S` → Search "Elastic Copilot"
+    2. **Try Command Palette**: `Ctrl+Shift+P` → Type "Elastic: Explain"
+    3. **Verify Selection**: Ensure code is selected when using commands
+    4. **Check Language Support**: Verify file type is supported
+    5. **Reset Keybindings**: Restore default keyboard shortcuts
+    
+    **Default Shortcuts**:
+    - `Ctrl+L` - Explain code
+    - `Ctrl+Shift+F` - Fix code
+    - `Ctrl+I` - Improve code
+    - `Ctrl+Shift+E` - Open panel
+  </Accordion>
+  
+  <Accordion title="Code Completion Not Appearing">
+    **Symptoms**: No inline suggestions, completions not showing
+    
+    **Solutions**:
+    1. **Check Settings**: Ensure code completion is enabled in settings
+    2. **File Type Support**: Verify language is supported for completion
+    3. **Trigger Manually**: Use `Ctrl+Space` to force trigger
+    4. **Check Other Extensions**: Disable conflicting completion extensions temporarily
+    5. **Restart Language Server**: `Ctrl+Shift+P` → "TypeScript: Restart TS Server"
+    
+    **Supported Languages**: JavaScript, TypeScript, Python, Java, C#, Go, Rust, and more
+  </Accordion>
+  
+  <Accordion title="Chat Not Responding">
+    **Symptoms**: Messages sent but no response, loading indefinitely
+    
+    **Solutions**:
+    1. **Check Connection**: Verify internet connectivity and authentication
+    2. **Try Shorter Message**: Start with simple request like "Hello"
+    3. **Clear Chat History**: Start new conversation to eliminate context issues
+    4. **Check Provider Status**: Verify chosen AI provider is operational
+    5. **Review Error Messages**: Check VSCode output panel for detailed errors
+    
+    **Provider Status Pages**:
+    - Anthropic: status.anthropic.com
+    - OpenAI: status.openai.com
+    - Google: status.cloud.google.com
+  </Accordion>
+</AccordionGroup>
+
+## Performance Issues
+
+<AccordionGroup>
+  <Accordion title="Slow Response Times">
+    **Symptoms**: Long delays, timeouts, sluggish responses
+    
+    **Solutions**:
+    1. **Check Network Speed**: Ensure stable, fast internet connection
+    2. **Reduce Context Size**: Limit amount of code selected for analysis
+    3. **Clear Cache**: Clear VSCode and extension caches
+    4. **Choose Faster Models**: Use Claude Haiku or GPT-3.5 for speed
+    5. **Close Unused Extensions**: Disable unnecessary VSCode extensions
+    6. **Monitor Resource Usage**: Check CPU and memory usage
+  </Accordion>
+  
+  <Accordion title="High Memory Usage">
+    **Symptoms**: VSCode using excessive RAM, system slowdown
+    
+    **Solutions**:
+    1. **Limit Conversation History**: Clear old conversations regularly
+    2. **Reduce Cache Size**: Lower cache limits in settings
+    3. **Close Large Files**: Avoid keeping many large files open
+    4. **Restart VSCode**: Clear memory leaks with periodic restarts
+    5. **Check Other Extensions**: Identify memory-hungry extensions
+    6. **Increase System RAM**: Consider hardware upgrade for large projects
+  </Accordion>
+  
+  <Accordion title="File Analysis Errors">
+    **Symptoms**: "Cannot read file", parsing errors, analysis failures
+    
+    **Solutions**:
+    1. **Check File Permissions**: Ensure read access to project files
+    2. **File Size Limits**: Very large files (>10MB) may have limited support
+    3. **Encoding Issues**: Ensure files use UTF-8 encoding
+    4. **Binary Files**: Copilot cannot analyze binary/compiled files
+    5. **Symlinks**: Check if symbolic links are causing issues
+    6. **Path Length**: Very long file paths may cause problems on Windows
+  </Accordion>
+</AccordionGroup>
+
+## MCP Server Issues
+
+<AccordionGroup>
+  <Accordion title="MCP Server Won't Start">
+    **Symptoms**: Server status shows "Disconnected" or "Error"
+    
+    **Solutions**:
+    1. **Check Prerequisites**: Verify Node.js and Python are installed
+    2. **Review Configuration**: Check MCP settings JSON for syntax errors
+    3. **Test Command Manually**: Run server command directly in terminal
+    4. **Check Dependencies**: Install required packages (uv, npx, etc.)
+    5. **Review Logs**: Check VSCode output panel for detailed error messages
+    
+    **Manual Testing**:
+    ```bash
+    # Test if command works directly
+    npx @anaisbetts/mcp-installer
+    uvx mcp-server-fetch
+    ```
+  </Accordion>
+  
+  <Accordion title="MCP Tools Not Available">
+    **Symptoms**: Can't use MCP tools in chat, tools not listed
+    
+    **Solutions**:
+    1. **Verify Server Status**: Check all servers show "Connected"
+    2. **Restart Servers**: Disable and re-enable servers in settings
+    3. **Check Tool Permissions**: Review auto-approval settings for MCP tools
+    4. **Test Basic Function**: Ask "What MCP tools do you have available?"
+    5. **Review Server Documentation**: Check specific server requirements
+  </Accordion>
+  
+  <Accordion title="Database Connection Failures">
+    **Symptoms**: Cannot connect to PostgreSQL, MongoDB, etc.
+    
+    **Solutions**:
+    1. **Check Connection String**: Verify database URL format and credentials
+    2. **Network Access**: Ensure database is accessible from your machine
+    3. **Firewall Rules**: Check if firewall blocks database connections
+    4. **SSL/TLS Settings**: Configure encryption settings if required
+    5. **Test Connection**: Use database client to verify connectivity first
+  </Accordion>
+</AccordionGroup>
+
+## Getting More Help
+
+### Self-Service Options
+
+<CardGroup cols={2}>
+  <Card title="Debug Information" icon="bug">
+    **Collect diagnostic info**:
+    - VSCode version (`Help > About`)
+    - Extension version (Extensions panel)
+    - Error messages (Output panel)
+    - System specifications
+  </Card>
+  <Card title="Reset Settings" icon="refresh">
+    **Start fresh**:
+    - Export current settings (backup)
+    - Reset to defaults
+    - Reconfigure step by step
+    - Test at each step
+  </Card>
+</CardGroup>
+
+### Contact Support
+
+<AccordionGroup>
+  <Accordion title="Before Contacting Support">
+    **Gather this information**:
+    
+    1. **System Information**:
+       - Operating system and version
+       - VSCode version
+       - Elastic Copilot extension version
+       - Node.js and Python versions (if using MCP)
+    
+    2. **Problem Description**:
+       - What you were trying to do
+       - What happened instead
+       - When the problem started
+       - Steps to reproduce the issue
+    
+    3. **Error Messages**:
+       - Screenshots of error dialogs
+       - Text from VSCode Output panel
+       - Browser console errors (for authentication issues)
+       - Terminal output (for MCP issues)
+  </Accordion>
+  
+  <Accordion title="Support Channels">
+    **Get help from our team**:
+    
+    - **Email Support**: support@elasticapp.io
+      - Include all diagnostic information
+      - Response within 24 hours
+    
+    - **Community Forum**: Join discussions with other users
+      - Share solutions and tips
+      - Get help from experienced users
+    
+    - **Documentation**: Check for updates to this guide
+      - New solutions added regularly
+      - Search for specific error messages
+  </Accordion>
+</AccordionGroup>
+
+### Emergency Workarounds
+
+If you need immediate functionality while troubleshooting:
+
+<Steps>
+  <Step title="Use Direct Chat">
+    Copy code to any AI chat service (Claude, ChatGPT) for urgent help
+  </Step>
+  <Step title="Switch Authentication Mode">
+    Try subscription mode if API keys fail, or vice versa
+  </Step>
+  <Step title="Use Simpler Features">
+    Start with basic chat instead of advanced MCP features
+  </Step>
+  <Step title="Temporary Alternatives">
+    Use other AI coding tools while resolving issues
+  </Step>
+</Steps>
+
+<Note>
+  Most issues are resolved quickly with the solutions above. Don't hesitate to reach out if you're still having problems!
+</Note> 

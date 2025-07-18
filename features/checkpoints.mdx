@@ -1,0 +1,153 @@
+---
+title: Checkpoints
+---
+
+Checkpoints automatically save snapshots of your workspace after each step in a task, allowing you to track changes, roll back when needed, and experiment confidently with your code.
+
+## How Checkpoints Work
+
+Elastic Copilot creates a checkpoint after each tool use (file edits, commands, browser actions, etc.). These checkpoints:
+
+- Work alongside your Git workflow without interference
+- Maintain context between restores
+- Use a shadow Git repository to track changes
+- Store snapshots in VS Code's global storage
+
+For example, if you're working on a feature and Elastic Copilot makes multiple file changes, each change creates a checkpoint. This means you can review each modification and, if needed, roll back to any point without affecting your main Git repository.
+
+## Shadow Git System
+
+Checkpoints use an innovative shadow Git repository system:
+
+<CardGroup cols={2}>
+  <Card title="Isolated Tracking">
+    Creates a separate Git repository that tracks your workspace without interfering with your main Git repo
+  </Card>
+  <Card title="Smart Exclusions">
+    Automatically excludes build artifacts, dependencies, and large files from checkpoint tracking
+  </Card>
+</CardGroup>
+
+### How It Works
+
+1. **Shadow Repository**: A separate `.git` directory is created in VS Code's global storage
+2. **Workspace Linking**: The shadow repo is configured to track your actual workspace files
+3. **Automatic Commits**: Each checkpoint creates a commit in the shadow repository
+4. **File Filtering**: Intelligent exclusion of irrelevant files (node_modules, build outputs, etc.)
+
+## Viewing Changes & Restoring
+
+After each tool use, you can:
+
+### Compare Changes
+- Click the **Compare** button to see modified files
+- View detailed diffs of what changed at each step
+- Review the complete history of modifications
+
+### Restore Options
+Click the **Restore** button next to any step to choose from three options:
+
+#### Restore Task and Workspace
+- Resets both codebase and task conversation to that point
+- Reverts all file changes made after the checkpoint
+- Removes conversation history after the selected step
+- **Use when**: You want to start fresh from a specific point
+
+#### Restore Task Only
+- Keeps codebase changes but reverts task context
+- Deletes conversation messages after the checkpoint
+- Preserves all file modifications
+- **Use when**: You want to try different prompts but keep the code changes
+
+#### Restore Workspace Only
+- Resets codebase while preserving task context
+- Reverts files to the checkpoint state
+- Keeps the full conversation history
+- **Use when**: You want to attempt different implementations while preserving the discussion
+
+## Use Cases
+
+Checkpoints enable more experimental development with AI assistance:
+
+### Safety Net for Auto-Approve Mode
+- Provides confidence when using auto-approve features
+- Easy to undo unexpected results
+- Allows rapid iteration without fear of breaking changes
+
+### Testing Different Approaches
+- Try multiple solutions confidently
+- Compare different implementations side-by-side
+- Quickly revert to working states
+- Ideal for exploring different design patterns or architectural approaches
+
+### Code Experimentation
+- Test aggressive refactoring approaches
+- Try experimental features without risk
+- Rollback partial implementations that don't work out
+
+## Best Practices
+
+### Strategic Checkpoint Usage
+- Use checkpoints as safety nets when experimenting
+- Leverage auto-approve mode more confidently, knowing you can always roll back
+- Create natural breakpoints in complex tasks
+
+### Choosing Restore Types
+- **"Restore Task and Workspace"** for a complete fresh start
+- **"Restore Task Only"** to try different prompts while keeping file changes
+- **"Restore Workspace Only"** to attempt different implementations while preserving conversation context
+
+### Workflow Integration
+- Checkpoints complement your regular Git workflow
+- Use for AI-assisted development phases
+- Regular Git commits for finalized features
+
+## Configuration
+
+### Enabling/Disabling Checkpoints
+Checkpoints can be controlled through VS Code settings:
+
+```json
+{
+  "elasticCopilot.enableCheckpoints": true
+}
+```
+
+### Requirements
+- **Git**: Must be installed and available in your system PATH
+- **Workspace**: Must be working within a VS Code workspace (not individual files)
+- **Directory Restrictions**: Cannot be used in home, Desktop, Documents, or Downloads directories
+
+## Technical Details
+
+### Storage Location
+Checkpoints are stored in VS Code's global storage:
+```
+<VS Code Global Storage>/tasks/<task-id>/checkpoints/
+```
+
+### File Exclusions
+The system automatically excludes:
+- Build artifacts (dist/, build/, out/)
+- Dependencies (node_modules/, vendor/)
+- Cache files (*.cache, .eslintcache)
+- Large media files (*.mp4, *.zip, etc.)
+- Environment files (.env*)
+- IDE files (.vscode/, .idea/)
+
+### Relationship with Message Editing
+The message editing feature uses checkpoints when you select the "Restore All" option, allowing you to edit and resubmit messages while restoring your workspace to that conversation point.
+
+## Managing Checkpoints
+
+### Deletion
+- Checkpoints are automatically cleaned up when tasks are deleted
+- Use "Delete All History" to remove all tasks and their checkpoints
+- Individual checkpoints cannot be deleted (they're tied to conversation steps)
+
+### Performance
+- Checkpoints are created asynchronously to avoid blocking development
+- Only tracks relevant files to minimize storage overhead
+- Automatic cleanup of temporary files and excluded content
+
+The checkpoint system provides a powerful safety net that encourages experimentation and rapid iteration while maintaining the ability to recover from any unwanted changes or explore alternative approaches. 

@@ -1,0 +1,155 @@
+---
+title: "Commands & Shortcuts"
+description: "Keyboard shortcuts and command palette access for Elastic Copilot features"
+---
+
+Elastic Copilot provides multiple ways to access its features through keyboard shortcuts, context menus, and the Command Palette. This guide covers all available commands and how to use them effectively.
+
+## Core AI Commands
+
+These are the primary AI-powered commands with dedicated keyboard shortcuts:
+
+### Explain Code
+- **Shortcut**: `Alt+Ctrl+N` (Windows/Linux) or `Cmd+Ctrl+N` (Mac)
+- **Function**: Analyzes and explains selected code or the current file
+- **Usage**: Select code and press the shortcut, or use without selection to explain the entire file
+
+### Fix Code
+- **Shortcut**: `Alt+Ctrl+X` (Windows/Linux) or `Cmd+Ctrl+X` (Mac)
+- **Function**: Identifies and fixes issues in selected code
+- **Usage**: Select problematic code and press the shortcut for AI-powered fixes
+
+### Improve Code
+- **Shortcut**: `Alt+Ctrl+I` (Windows/Linux) or `Cmd+Ctrl+I` (Mac)
+- **Function**: Suggests improvements and optimizations for selected code
+- **Usage**: Select code and press the shortcut to get enhancement suggestions
+
+## Context Menu Commands
+
+Right-click on code to access these commands when available:
+
+### Code Analysis Commands
+- **Explain with Elastic**: Available when code is selected
+- **Fix with Elastic**: Available when code is selected
+- **Improve with Elastic**: Available when code is selected
+
+### Reference Commands
+- **Add to References**: Available when a reference provider is active
+- **Remove from References**: Available when a reference provider is active
+
+These commands appear contextually based on:
+- Whether code is selected
+- Whether a reference provider is available
+- Current editor state
+
+## Command Palette Access
+
+All Elastic Copilot commands are accessible through VS Code's Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`):
+
+### Core Commands
+- `Elastic: Explain Code`
+- `Elastic: Fix Code`
+- `Elastic: Improve Code`
+
+### Interface Commands
+- `Elastic: New Task` - Start a new conversation
+- `Elastic: History` - View conversation history
+- `Elastic: Account` - Manage account settings
+
+### Advanced Commands
+- `Elastic: Export Markdown` - Export conversations to markdown
+- `Elastic: Open File` - Open files through AI assistance
+- `Elastic: Extract Text` - Extract text from various sources
+
+## Memory Bank Integration
+
+Commands work seamlessly with Memory Bank features:
+
+### Context-Aware Commands
+- Commands automatically include relevant context from Memory Bank
+- Active context templates enhance command responses
+- Product and technical context inform AI responses
+
+### Memory-Enhanced Shortcuts
+- Keyboard shortcuts leverage stored project knowledge
+- Commands adapt based on current project configuration
+- Context switching affects command behavior
+
+## MCP Tool Integration
+
+Commands can utilize MCP (Model Context Protocol) tools:
+
+### Enhanced Capabilities
+- Commands may trigger MCP tool usage automatically
+- External tool integration through MCP servers
+- Extended functionality beyond core AI features
+
+### Tool-Specific Commands
+- Commands adapt when MCP tools are available
+- Tool-specific shortcuts may become available
+- Dynamic command enhancement based on connected tools
+
+## Browser Integration
+
+Commands work with browser functionality:
+
+### Web-Enhanced Commands
+- Commands can incorporate web research
+- Browser session context affects responses
+- URL content integration in command responses
+
+## Best Practices
+
+### Effective Usage
+1. **Select Specific Code**: For targeted analysis, select the exact code you want to work with
+2. **Use Context**: Commands work better with relevant context from Memory Bank
+3. **Combine Commands**: Use multiple commands in sequence for comprehensive code improvement
+4. **Leverage Shortcuts**: Keyboard shortcuts are faster than menu navigation
+
+### Optimization Tips
+1. **Configure Memory Bank**: Set up project context for better command responses
+2. **Use MCP Tools**: Connect relevant tools to enhance command capabilities
+3. **Maintain Context**: Keep related files open for better contextual understanding
+4. **Review Suggestions**: Always review AI suggestions before implementing
+
+## Troubleshooting
+
+### Common Issues
+
+**Commands Not Appearing**
+- Ensure Elastic Copilot is properly installed and activated
+- Check that you're in a supported file type
+- Verify code selection if using selection-based commands
+
+**Keyboard Shortcuts Not Working**
+- Check for conflicting key bindings in VS Code settings
+- Ensure the extension is active and properly loaded
+- Restart VS Code if shortcuts stop responding
+
+**Context Menu Missing**
+- Right-click directly on selected code
+- Ensure code is properly selected
+- Check that the file type is supported
+
+### Performance Optimization
+- Use specific code selections rather than entire files when possible
+- Ensure Memory Bank is properly configured for your project
+- Keep related context files accessible for better responses
+
+## Customization
+
+### Key Bindings
+You can customize keyboard shortcuts in VS Code:
+1. Open Command Palette (`Ctrl+Shift+P`)
+2. Search for "Preferences: Open Keyboard Shortcuts"
+3. Search for "Elastic" commands
+4. Modify shortcuts as needed
+
+### Context Menu
+Context menu items are automatically managed based on:
+- Current selection state
+- Available reference providers
+- Active MCP tools
+- Extension configuration
+
+The Commands & Shortcuts system provides flexible access to Elastic Copilot's powerful AI features, ensuring you can work efficiently with your preferred interaction method. 

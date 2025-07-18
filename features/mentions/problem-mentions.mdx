@@ -1,0 +1,210 @@
+---
+title: "Problem Mentions"
+description: "Reference all workspace errors and warnings with complete diagnostic information"
+---
+
+Problem mentions let you reference all errors and warnings in your workspace using `@problems`. When you mention problems, Elastic sees the complete list of diagnostics with file locations, error messages, and severity levels.
+
+## How Problem Mentions Work
+
+When you type `@problems` in the chat input, Elastic automatically gathers:
+
+- **All errors**: Critical issues that prevent compilation/execution
+- **All warnings**: Potential issues that should be addressed
+- **File locations**: Exact line and column numbers
+- **Error messages**: Complete diagnostic information
+- **Severity levels**: Error, warning, info, and hint classifications
+
+## Syntax
+
+```
+@problems
+```
+
+Simple and straightforward - just type `@problems` and Elastic will include all current workspace diagnostics.
+
+## What Elastic Sees
+
+When you mention problems, Elastic receives:
+
+1. **Complete error list** - Every diagnostic in your workspace
+2. **File paths** - Exact location of each issue
+3. **Line numbers** - Precise positioning information
+4. **Error messages** - Full diagnostic descriptions
+5. **Severity levels** - Priority and importance of each issue
+6. **Error codes** - Specific diagnostic identifiers when available
+
+## Best Practices
+
+### When to Use Problem Mentions
+
+- **Debugging sessions**: `@problems Help me fix all these errors`
+- **Code review**: `@problems Are these warnings important?`
+- **Before deployment**: `@problems Clean up before release`
+- **Learning**: `@problems Explain what these errors mean`
+
+### Combining with File Mentions
+
+Target specific problematic files:
+
+```
+@problems @/src/auth.js 
+Focus on the authentication errors
+```
+
+### Combining with Terminal Output
+
+Get comprehensive debugging context:
+
+```
+@problems @terminal 
+The build is failing and I'm seeing these errors
+```
+
+## Types of Problems Detected
+
+### TypeScript/JavaScript Errors
+- Type mismatches
+- Missing imports
+- Undefined variables
+- Syntax errors
+
+### Linting Issues
+- ESLint violations
+- Prettier formatting
+- Custom rule violations
+- Code style inconsistencies
+
+### Build Errors
+- Compilation failures
+- Missing dependencies
+- Configuration issues
+- Asset problems
+
+### Runtime Warnings
+- Deprecated API usage
+- Performance concerns
+- Security vulnerabilities
+- Best practice violations
+
+## Problem Severity Levels
+
+### Errors (Critical)
+- **Red indicators**: Must be fixed
+- **Block compilation**: Prevent builds
+- **High priority**: Address immediately
+
+### Warnings (Important)
+- **Yellow indicators**: Should be fixed
+- **Allow compilation**: Don't block builds
+- **Medium priority**: Address when possible
+
+### Info (Informational)
+- **Blue indicators**: Good to know
+- **Suggestions**: Improvements available
+- **Low priority**: Address when convenient
+
+### Hints (Subtle)
+- **Gray indicators**: Minor suggestions
+- **Optimizations**: Performance or style
+- **Lowest priority**: Address if desired
+
+## Tips for Effective Problem Mentions
+
+1. **Regular checks**: Use `@problems` frequently during development
+2. **Prioritize errors**: Fix errors before warnings
+3. **Batch similar issues**: Group related problems together
+4. **Understand context**: Ask Elastic to explain unfamiliar errors
+5. **Prevent regression**: Check problems before committing code
+
+## Integration with Memory Bank
+
+Problem mentions help Elastic learn:
+
+- **Common error patterns**: Mistakes you frequently make
+- **Project-specific issues**: Recurring problems in your codebase
+- **Resolution strategies**: How you prefer to fix certain errors
+- **Code quality standards**: Your tolerance for different warning types
+
+## Common Use Cases
+
+### Debugging Session
+```
+@problems 
+Help me understand and fix all these errors
+```
+
+### Code Quality Review
+```
+@problems 
+Which of these warnings should I prioritize?
+```
+
+### Pre-commit Cleanup
+```
+@problems 
+Clean up the codebase before I commit
+```
+
+### Learning and Understanding
+```
+@problems 
+Explain what these TypeScript errors mean
+```
+
+### Batch Error Fixing
+```
+@problems 
+Fix all the linting errors in one go
+```
+
+## Combining with Other Mentions
+
+### With File Mentions
+```
+@problems @/src/components/Button.tsx 
+Fix the errors in this specific component
+```
+
+### With Folder Mentions
+```
+@problems @/src/api/ 
+Clean up all API-related errors
+```
+
+### With Terminal Output
+```
+@problems @terminal 
+The build failed and I'm seeing these diagnostics
+```
+
+### With Git Changes
+```
+@problems @git-changes 
+Make sure my recent changes don't introduce errors
+```
+
+## Troubleshooting
+
+### No Problems Detected
+If `@problems` shows no issues:
+- Check if your IDE/editor is running diagnostics
+- Verify language servers are active
+- Ensure project is properly configured
+- Try opening/saving files to trigger diagnostics
+
+### Too Many Problems
+If overwhelmed by problem count:
+- Focus on errors first, then warnings
+- Use file mentions to target specific areas
+- Ask Elastic to prioritize the most critical issues
+- Consider filtering by file or directory
+
+### Missing Expected Problems
+If you expect more problems:
+- Check if all files are included in your project
+- Verify linting and type checking are enabled
+- Ensure all necessary extensions are installed
+- Try restarting your language server
+
+Problem mentions are essential for maintaining code quality and catching issues early in development, making them one of the most valuable mention types for debugging and code maintenance. 

@@ -1,0 +1,248 @@
+---
+title: Authentication & Setup
+description: Learn how to authenticate with Elastic Copilot using subscription or direct API providers
+icon: shield-check
+---
+
+# Authentication & Setup
+
+Elastic Copilot offers flexible authentication options to suit different workflows and preferences. Choose between our managed subscription service or direct API provider integration.
+
+## Authentication Modes
+
+<CardGroup cols={2}>
+  <Card title="Subscription Mode" icon="credit-card">
+    **Recommended for most users**
+    - No API keys required
+    - Pay-per-use pricing
+    - Managed infrastructure
+    - Latest model access
+  </Card>
+  <Card title="Direct Provider Mode" icon="key">
+    **For advanced users**
+    - Bring your own API keys
+    - Direct provider billing
+    - Full control over usage
+    - Multiple provider support
+  </Card>
+</CardGroup>
+
+## Subscription Mode Setup (Recommended)
+
+The easiest way to get started with Elastic Copilot:
+
+<Steps>
+  <Step title="Open Elastic Copilot">
+    Click the Elastic Copilot icon in VSCode's sidebar
+  </Step>
+  <Step title="Sign In">
+    Click "Sign In" and authenticate with your browser
+    - **New users**: Create an account during sign-in
+    - **Existing users**: Use your credentials
+  </Step>
+  <Step title="Choose Subscription">
+    Select a subscription plan that fits your usage:
+    - **Free Tier**: Limited monthly usage
+    - **Pro Plan**: Extended usage limits
+    - **Team Plan**: Multi-user collaboration
+  </Step>
+  <Step title="Start Coding">
+    You're ready! Start using AI commands and chat immediately
+  </Step>
+</Steps>
+
+### Subscription Benefits
+
+<AccordionGroup>
+  <Accordion title="No API Key Management">
+    No need to obtain, store, or manage API keys from multiple providers. Everything is handled securely by Elastic.
+  </Accordion>
+  
+  <Accordion title="Access to Latest Models">
+    Get immediate access to the newest AI models from Anthropic, OpenAI, Google, and others as they become available.
+  </Accordion>
+  
+  <Accordion title="Transparent Pricing">
+    Pay-per-use pricing with clear usage tracking. No surprise bills or complex token calculations.
+  </Accordion>
+  
+  <Accordion title="Managed Infrastructure">
+    Reliable, fast service with optimized routing and caching. No setup or maintenance required.
+  </Accordion>
+</AccordionGroup>
+
+## Direct Provider Mode Setup
+
+For users who prefer direct control:
+
+<Warning>
+  Direct provider mode requires managing your own API keys and understanding each provider's pricing structure.
+</Warning>
+
+### Supported Providers
+
+<Tabs>
+  <Tab title="Anthropic">
+    **Claude Models** (Recommended)
+    
+    <Steps>
+      <Step title="Get API Key">
+        Visit [Anthropic Console](https://console.anthropic.com) and create an API key
+      </Step>
+      <Step title="Configure in Elastic">
+        - Open Elastic Copilot settings
+        - Select "Anthropic" as provider  
+        - Enter your API key
+      </Step>
+      <Step title="Choose Model">
+        Select from Claude 3.5 Sonnet, Claude 3 Opus, or Claude 3 Haiku
+      </Step>
+    </Steps>
+  </Tab>
+  
+  <Tab title="OpenAI">
+    **GPT Models**
+    
+    <Steps>
+      <Step title="Get API Key">
+        Visit [OpenAI Platform](https://platform.openai.com) and create an API key
+      </Step>
+      <Step title="Configure in Elastic">
+        - Open Elastic Copilot settings
+        - Select "OpenAI" as provider
+        - Enter your API key
+      </Step>
+      <Step title="Choose Model">
+        Select from GPT-4, GPT-4 Turbo, or GPT-3.5 Turbo
+      </Step>
+    </Steps>
+  </Tab>
+  
+  <Tab title="Google">
+    **Gemini Models**
+    
+    <Steps>
+      <Step title="Get API Key">
+        Visit [Google AI Studio](https://aistudio.google.com) and create an API key
+      </Step>
+      <Step title="Configure in Elastic">
+        - Open Elastic Copilot settings
+        - Select "Gemini" as provider
+        - Enter your API key
+      </Step>
+      <Step title="Choose Model">
+        Select from Gemini Pro, Gemini Pro Vision, or Gemini Ultra
+      </Step>
+    </Steps>
+  </Tab>
+  
+  <Tab title="Other Providers">
+    **Additional Options**
+    
+    - **AWS Bedrock**: Enterprise-grade Claude access via AWS
+    - **OpenRouter**: Access to multiple models via one API
+    - **Ollama**: Local model execution
+    - **LM Studio**: Local model hosting
+    - **VSCode Language Models**: Use VSCode's built-in AI features
+  </Tab>
+</Tabs>
+
+### Direct Provider Configuration
+
+<Steps>
+  <Step title="Open Settings">
+    Click the gear icon in Elastic Copilot sidebar
+  </Step>
+  <Step title="Select Provider">
+    Choose your preferred AI provider from the dropdown
+  </Step>
+  <Step title="Enter Credentials">
+    Provide API keys and any required configuration
+  </Step>
+  <Step title="Test Connection">
+    Send a test message to verify setup
+  </Step>
+</Steps>
+
+## Switching Between Modes
+
+You can switch between subscription and direct provider modes at any time:
+
+<CardGroup cols={2}>
+  <Card title="To Subscription Mode" icon="arrow-right">
+    - Open Elastic Copilot settings
+    - Click "Use Subscription"
+    - Sign in with your account
+  </Card>
+  <Card title="To Direct Provider Mode" icon="arrow-left">
+    - Open Elastic Copilot settings
+    - Select "Configure Providers"
+    - Choose and configure your provider
+  </Card>
+</CardGroup>
+
+## Security & Privacy
+
+<AccordionGroup>
+  <Accordion title="Subscription Mode Security">
+    - All communications encrypted in transit
+    - No code stored on Elastic servers
+    - SOC 2 compliant infrastructure
+    - GDPR and CCPA compliant
+  </Accordion>
+  
+  <Accordion title="Direct Provider Security">
+    - API keys stored securely in VSCode's secret storage
+    - Direct communication with providers
+    - You control data flow and retention
+    - Follow each provider's security guidelines
+  </Accordion>
+  
+  <Accordion title="Data Handling">
+    - Code sent only when you explicitly request AI assistance
+    - No background code scanning or telemetry
+    - You can review all requests before sending
+    - Full control over what data is shared
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting Authentication
+
+<AccordionGroup>
+  <Accordion title="Sign-in Issues">
+    - Ensure you have an active internet connection
+    - Try opening the sign-in link in an incognito/private browser window
+    - Check if your firewall is blocking the authentication flow
+    - Clear browser cookies and try again
+  </Accordion>
+  
+  <Accordion title="API Key Issues">
+    - Verify the API key is correct and active
+    - Check that you have sufficient credits/quota with the provider
+    - Ensure the API key has the necessary permissions
+    - Try generating a new API key if problems persist
+  </Accordion>
+  
+  <Accordion title="Subscription Issues">
+    - Check your subscription status in the Elastic dashboard
+    - Verify payment method is valid and current
+    - Contact support if you have billing questions
+    - Check usage limits and upgrade if needed
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Once authenticated:
+
+<CardGroup cols={1}>
+  <Card title="Quick Start Guide" icon="play" href="/quickstart">
+    Take a tour of Elastic Copilot's core features
+  </Card>
+  <Card title="Configuration" icon="gear" href="/configuration/overview">
+    Customize settings and preferences
+  </Card>
+  <Card title="Subscription vs API Keys" icon="balance-scale" href="/configuration/subscription-vs-api-keys">
+    Detailed comparison of both modes
+  </Card>
+</CardGroup> 

@@ -1,0 +1,82 @@
+---
+title: "Mentions"
+description: "Reference files, folders, problems, terminal output, and web content directly in your conversations"
+---
+
+@ mentions are one of Elastic's most powerful features, letting you seamlessly bring external context into your conversations. Instead of copying and pasting code, error messages, or documentation, you can simply reference them with an @ symbol.
+
+When you type `@` in the chat input, Elastic shows a menu of available mention types. These mentions let you reference files, folders, problems, terminal output, git changes, and even web content directly in your conversations.
+
+## Available @ Mentions
+
+Elastic supports several types of @ mentions, each designed to bring different kinds of context into your conversations:
+
+<Columns cols={2}>
+  <Card title="File Mentions" icon="file" href="/features/mentions/file-mentions">
+    Reference any file in your workspace with `@/path/to/file`. Elastic sees the complete file content, including imports, related
+    functions, and surrounding context.
+  </Card>
+
+  <Card title="Folder Mentions" icon="folder" href="/features/mentions/folder-mentions">
+    Reference entire directories with `@/path/to/folder/`. Elastic sees the folder structure and all file contents, perfect for
+    understanding complex interactions between multiple files.
+  </Card>
+
+  <Card title="Problem Mentions" icon="triangle-exclamation" href="/features/mentions/problem-mentions">
+    Use `@problems` to show Elastic all the errors and warnings in your workspace. Elastic sees the complete list with file locations
+    and error messages.
+  </Card>
+
+  <Card title="Terminal Mentions" icon="terminal" href="/features/mentions/terminal-mentions">
+    Use `@terminal` to share your recent terminal output. Elastic sees the complete output with formatting preserved, perfect for
+    debugging build errors or test failures.
+  </Card>
+
+  <Card title="Git Mentions" icon="code-branch" href="/features/mentions/git-mentions">
+    Reference uncommitted changes with `@git-changes` or specific commits with `@[commit-hash]`. Elastic sees the complete diff,
+    commit message, and other relevant information.
+  </Card>
+
+  <Card title="URL Mentions" icon="globe" href="/features/mentions/url-mentions">
+    Reference web content with `@https://example.com`. Elastic fetches and sees the complete webpage content, perfect for
+    referencing documentation or GitHub issues.
+  </Card>
+</Columns>
+
+## Why @ Mentions Matter
+
+@ mentions transform how you interact with Elastic by:
+
+1. **Eliminating copy-paste**: No more copying and pasting code, error messages, or terminal output. Just reference them directly.
+
+2. **Preserving context**: Elastic sees the complete context, including imports, related functions, and surrounding code that might be relevant.
+
+3. **Maintaining formatting**: Terminal output, error messages, and web content keep their original formatting for better readability.
+
+4. **Enabling deeper analysis**: With full context, Elastic can provide more accurate suggestions and better understand the relationships between different parts of your codebase.
+
+## How to Use @ Mentions
+
+1. **Type `@`** in the chat input to open the mentions menu
+2. **Select a mention type** from the dropdown menu
+3. **Choose the specific item** you want to reference (file, folder, URL, etc.)
+4. **Continue typing** your message - Elastic will include the referenced content in its analysis
+
+## Best Practices
+
+- **Combine mentions**: Use multiple mentions in a single message to provide comprehensive context
+- **Be specific**: Reference the exact files or folders relevant to your question
+- **Use problems mentions**: When debugging, `@problems` gives Elastic visibility into all current issues
+- **Reference documentation**: Use URL mentions to include relevant documentation or GitHub issues
+- **Share terminal output**: Use `@terminal` when asking about build errors or test failures
+
+## Integration with Memory Bank
+
+@ mentions work seamlessly with Elastic's Memory Bank feature. When you reference files or folders, Elastic can:
+
+- Remember patterns and preferences from your codebase
+- Understand project structure and conventions
+- Provide more contextual suggestions based on your development patterns
+- Learn from your coding style and apply it consistently
+
+@ mentions are the foundation of effective communication with Elastic, enabling you to provide rich context without manual copying and pasting. 

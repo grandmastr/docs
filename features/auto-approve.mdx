@@ -1,0 +1,155 @@
+---
+---
+
+Elastic Copilot's auto approve feature allows you to automatically approve and execute certain types of commands and code suggestions, streamlining your development workflow.
+
+## How It Works
+
+Auto approve enables Elastic Copilot to execute pre-approved actions without requiring manual confirmation for each operation. This feature is designed to speed up repetitive tasks while maintaining safety through configurable rules.
+
+<CardGroup cols={2}>
+  <Card title="Safe Operations" icon="shield-check">
+    **Automatically approved actions**
+    - File reading and analysis
+    - Code formatting and linting
+    - Documentation generation
+    - Simple refactoring operations
+  </Card>
+  <Card title="Manual Approval" icon="user-check">
+    **Always requires confirmation**
+    - File deletion or major changes
+    - System configuration modifications
+    - External API calls
+    - Database operations
+  </Card>
+</CardGroup>
+
+## Configuration Options
+
+### Basic Settings
+
+<Steps>
+  <Step title="Enable Auto Approve">
+    Open VSCode settings and search for "elastic.autoApproval.enabled"
+  </Step>
+  <Step title="Set Approval Rules">
+    Configure which types of operations should be auto-approved
+  </Step>
+  <Step title="Define Exclusions">
+    Specify files or directories that should always require manual approval
+  </Step>
+</Steps>
+
+### Advanced Configuration
+
+<AccordionGroup>
+  <Accordion title="File Operation Rules">
+    ```json
+    {
+      "elastic.autoApproval.fileOperations": {
+        "read": true,
+        "write": false,
+        "delete": false,
+        "create": true
+      }
+    }
+    ```
+  </Accordion>
+  
+  <Accordion title="Command Execution Rules">
+    ```json
+    {
+      "elastic.autoApproval.commands": {
+        "build": true,
+        "test": true,
+        "deploy": false,
+        "install": false
+      }
+    }
+    ```
+  </Accordion>
+  
+  <Accordion title="Project-Specific Rules">
+    ```json
+    {
+      "elastic.autoApproval.projectRules": {
+        "excludeDirectories": ["node_modules", ".git", "build"],
+        "excludeFiles": ["*.env", "*.key", "*.pem"]
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Safety Features
+
+### Built-in Protections
+
+<Warning>
+  **High-Risk Operations**: Auto approve never applies to operations that could cause data loss or security issues.
+</Warning>
+
+<Note>
+  **Audit Trail**: All auto-approved actions are logged for review and debugging purposes.
+</Note>
+
+<Tip>
+  **Gradual Enablement**: Start with conservative settings and gradually expand auto approve as you become comfortable with the feature.
+</Tip>
+
+## Best Practices
+
+### Recommended Settings
+
+<CardGroup cols={1}>
+  <Card title="Development Environment" icon="code">
+    Enable auto approve for code analysis, formatting, and documentation tasks
+  </Card>
+  <Card title="Production Environment" icon="server">
+    Disable auto approve for deployment and system configuration changes
+  </Card>
+  <Card title="Team Projects" icon="users">
+    Use consistent auto approve settings across team members
+  </Card>
+</CardGroup>
+
+### Security Considerations
+
+<AccordionGroup>
+  <Accordion title="Sensitive Files">
+    Always exclude configuration files, credentials, and deployment scripts from auto approve
+  </Accordion>
+  
+  <Accordion title="External Dependencies">
+    Be cautious with auto-approving operations that involve external APIs or services
+  </Accordion>
+  
+  <Accordion title="Review Logs">
+    Regularly review auto approve logs to ensure the feature is working as expected
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Commands Not Auto-Approved">
+    - Check that auto approve is enabled in settings
+    - Verify the command type is configured for auto approve
+    - Ensure the file/directory isn't in the exclusion list
+  </Accordion>
+  
+  <Accordion title="Unexpected Auto-Approvals">
+    - Review your auto approve rules configuration
+    - Check for overly broad inclusion patterns
+    - Consider tightening the approval criteria
+  </Accordion>
+  
+  <Accordion title="Performance Issues">
+    - Reduce the scope of auto-approved operations
+    - Add more specific exclusion rules
+    - Consider disabling auto approve for large projects
+  </Accordion>
+</AccordionGroup>
+

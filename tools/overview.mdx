@@ -1,0 +1,322 @@
+---
+title: Tools Overview
+description: Comprehensive guide to all tools available in Elastic Copilot
+icon: wrench
+---
+
+# Tools Overview
+
+Elastic Copilot leverages a comprehensive set of tools to understand your code, automate tasks, and integrate with external services. These tools work seamlessly behind the scenes to provide intelligent assistance.
+
+## Tool Categories
+
+<CardGroup cols={2}>
+  <Card title="File Operations" icon="folder" href="/tools/file-operations">
+    Read, write, search, and manage files and directories in your workspace
+  </Card>
+  <Card title="Code Analysis" icon="code" href="/tools/code-analysis">
+    Parse code structures, extract definitions, and understand syntax
+  </Card>
+  <Card title="Terminal Commands" icon="terminal" href="/tools/terminal-commands">
+    Execute commands, manage processes, and interact with your development environment
+  </Card>
+  <Card title="MCP Integration" icon="puzzle-piece" href="/mcp/quickstart">
+    Connect to external databases, APIs, and custom tools via Model Context Protocol
+  </Card>
+</CardGroup>
+
+## Core Analysis Tools
+
+Elastic Copilot uses these fundamental tools for understanding your codebase:
+
+### File System Tools
+
+<AccordionGroup>
+  <Accordion title="read_file">
+    **Purpose**: Read and analyze file contents
+    
+    **Capabilities**:
+    - Read text files of any size
+    - Parse different file formats
+    - Extract code context and structure
+    - Support for all programming languages
+    
+    **Usage**: Automatically invoked when you reference files or when AI needs context
+  </Accordion>
+  
+  <Accordion title="list_files">
+    **Purpose**: Explore directory structures and file listings
+    
+    **Capabilities**:
+    - Browse project directory tree
+    - Filter files by type or pattern
+    - Understand project organization
+    - Identify key files and configurations
+    
+    **Usage**: Used for project exploration and finding relevant files
+  </Accordion>
+  
+  <Accordion title="search_files">
+    **Purpose**: Find patterns, text, and code across your codebase
+    
+    **Capabilities**:
+    - Regex pattern matching
+    - Cross-file text search
+    - Function and variable usage tracking
+    - Import/dependency discovery
+    
+    **Usage**: Activated when searching for specific code patterns or references
+  </Accordion>
+</AccordionGroup>
+
+### Code Understanding Tools
+
+<AccordionGroup>
+  <Accordion title="list_code_definition_names">
+    **Purpose**: Extract code structure using tree-sitter parsing
+    
+    **Capabilities**:
+    - Parse 15+ programming languages
+    - Extract functions, classes, methods, and variables
+    - Understand code hierarchy and relationships
+    - Identify exported/imported symbols
+    
+    **Usage**: Provides structural understanding of your codebase
+  </Accordion>
+  
+  <Accordion title="Tree-sitter Integration">
+    **Purpose**: Language-aware code parsing and analysis
+    
+    **Capabilities**:
+    - Syntax-aware code understanding
+    - AST (Abstract Syntax Tree) generation
+    - Language-specific pattern recognition
+    - Semantic code analysis
+    
+    **Usage**: Powers intelligent code completion and analysis features
+  </Accordion>
+</AccordionGroup>
+
+## Automation Tools
+
+### Terminal Integration
+
+<Tabs>
+  <Tab title="Command Execution">
+    **execute_command** - Run terminal commands and scripts
+    
+    **Features**:
+    - Cross-platform command execution
+    - Real-time output streaming
+    - Background process management
+    - Environment variable support
+    
+    **Examples**:
+    ```bash
+    npm install package-name
+    python script.py
+    git commit -m "message"
+    make build
+    ```
+  </Tab>
+  
+  <Tab title="Process Management">
+    **Terminal Process Control**
+    
+    **Features**:
+    - Start and stop development servers
+    - Monitor running processes
+    - Handle interactive commands
+    - Manage multiple terminal sessions
+    
+    **Use Cases**:
+    - Starting dev servers
+    - Running tests
+    - Building projects
+    - Managing databases
+  </Tab>
+</Tabs>
+
+### Browser Automation
+
+<CardGroup cols={2}>
+  <Card title="Web Testing" icon="globe">
+    - Automated browser interactions
+    - Screenshot capture
+    - Console log inspection
+    - DOM manipulation testing
+  </Card>
+  <Card title="Content Extraction" icon="download">
+    - Web page content fetching
+    - API testing and validation
+    - Form submission automation
+    - Dynamic content interaction
+  </Card>
+</CardGroup>
+
+## MCP Tool Integration
+
+Model Context Protocol (MCP) extends Elastic Copilot with powerful external integrations:
+
+### Database Tools
+
+<AccordionGroup>
+  <Accordion title="PostgreSQL Server">
+    Connect to PostgreSQL databases for data operations
+    
+    **Capabilities**:
+    - Query execution and result analysis
+    - Schema exploration and understanding
+    - Data manipulation and updates
+    - Performance analysis and optimization
+  </Accordion>
+  
+  <Accordion title="MongoDB Server">
+    Work with MongoDB collections and documents
+    
+    **Capabilities**:
+    - Document queries and aggregations
+    - Collection management
+    - Index optimization
+    - Data modeling assistance
+  </Accordion>
+  
+  <Accordion title="SQLite Server">
+    Local database operations and testing
+    
+    **Capabilities**:
+    - Lightweight database operations
+    - Schema design and testing
+    - Data import/export
+    - Query optimization
+  </Accordion>
+</AccordionGroup>
+
+### Development Tools
+
+<Tabs>
+  <Tab title="Version Control">
+    **GitHub/GitLab Integration**
+    
+    - Repository management
+    - Pull request operations
+    - Issue tracking
+    - Branch management
+    - Code review assistance
+  </Tab>
+  
+  <Tab title="Cloud Services">
+    **AWS Integration**
+    
+    - EC2 instance management
+    - S3 bucket operations
+    - Lambda function deployment
+    - CloudWatch monitoring
+  </Tab>
+  
+  <Tab title="Browser Automation">
+    **Puppeteer Integration**
+    
+    - Automated testing scripts
+    - Web scraping capabilities
+    - Performance monitoring
+    - Screenshot generation
+  </Tab>
+</Tabs>
+
+## Custom Tool Development
+
+Create your own tools using the MCP framework:
+
+<Steps>
+  <Step title="Design Tool Interface">
+    Define what your tool should do and what parameters it needs
+  </Step>
+  <Step title="Implement Tool Logic">
+    Write the actual functionality using your preferred language
+  </Step>
+  <Step title="Create MCP Server">
+    Package your tool as an MCP server following the protocol specification
+  </Step>
+  <Step title="Configure Integration">
+    Add your custom server to Elastic Copilot's MCP settings
+  </Step>
+</Steps>
+
+## Tool Selection Logic
+
+Elastic Copilot intelligently chooses tools based on context:
+
+<CardGroup cols={2}>
+  <Card title="Context-Driven" icon="brain">
+    Tools are selected based on the type of assistance requested and available context
+  </Card>
+  <Card title="Efficiency-Focused" icon="gauge">
+    Most efficient tools are chosen first, with fallbacks for complex scenarios
+  </Card>
+  <Card title="Permission-Aware" icon="shield">
+    Tools respect user permissions and approval settings
+  </Card>
+  <Card title="Error-Resilient" icon="life-ring">
+    Backup strategies when primary tools fail or are unavailable
+  </Card>
+</CardGroup>
+
+## Performance Considerations
+
+<AccordionGroup>
+  <Accordion title="Caching">
+    - File analysis results are cached during conversations
+    - Tree-sitter parsing results are reused when possible
+    - MCP server connections are pooled for efficiency
+  </Accordion>
+  
+  <Accordion title="Lazy Loading">
+    - Tools are loaded only when needed
+    - File reading happens on-demand
+    - Large file processing is optimized for performance
+  </Accordion>
+  
+  <Accordion title="Resource Management">
+    - Terminal processes are managed to prevent resource leaks
+    - Browser automation sessions are properly cleaned up
+    - Database connections are pooled and reused
+  </Accordion>
+</AccordionGroup>
+
+## Security and Privacy
+
+<Warning>
+  **Tool Access**: Tools have access to your local file system and can execute commands. Review tool operations before granting permissions.
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Local Tools">
+    File operations and code analysis happen entirely on your machine. No code is sent to external services without explicit action.
+  </Accordion>
+  
+  <Accordion title="External Integrations">
+    MCP tools that connect to external services use your provided credentials and follow each service's security guidelines.
+  </Accordion>
+  
+  <Accordion title="Approval System">
+    Configure auto-approval settings for trusted operations, or review each tool operation manually.
+  </Accordion>
+</AccordionGroup>
+
+## Getting Started
+
+<CardGroup cols={1}>
+  <Card title="File Operations" icon="folder" href="/tools/file-operations">
+    Learn about file reading, writing, and searching capabilities
+  </Card>
+  <Card title="Terminal Commands" icon="terminal" href="/tools/terminal-commands">
+    Understand command execution and process management
+  </Card>
+  <Card title="MCP Integration" icon="puzzle-piece" href="/mcp/quickstart">
+    Set up external tool integrations with Model Context Protocol
+  </Card>
+  <Card title="Auto-Approval Settings" icon="gear" href="/configuration/auto-approval">
+    Configure which tools can run automatically vs. requiring approval
+  </Card>
+</CardGroup> 

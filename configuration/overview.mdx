@@ -1,0 +1,296 @@
+---
+title: Configuration Overview
+description: Customize Elastic Copilot settings, preferences, and behavior
+icon: gear
+---
+
+# Configuration Overview
+
+Elastic Copilot offers extensive customization options to tailor the AI assistant to your development workflow and preferences. Configure everything from API providers to keyboard shortcuts.
+
+## Settings Access
+
+<CardGroup cols={2}>
+  <Card title="Extension Settings" icon="gear">
+    Click the gear icon in the Elastic Copilot sidebar or use `Ctrl+,` and search "Elastic Copilot"
+  </Card>
+  <Card title="VS Code Settings" icon="settings">
+    Access global VS Code settings that affect Elastic Copilot behavior and appearance
+  </Card>
+</CardGroup>
+
+## Core Configuration Areas
+
+### Authentication & Providers
+
+<Tabs>
+  <Tab title="Subscription Mode">
+    **Recommended for most users**
+    
+    - **Account Management**: Sign in/out, subscription status
+    - **Usage Tracking**: Monitor token usage and billing
+    - **Model Selection**: Choose from available models
+    - **Subscription Plans**: Upgrade/downgrade plans
+  </Tab>
+  
+  <Tab title="Direct Provider Mode">
+    **For advanced users**
+    
+    - **API Provider Selection**: Anthropic, OpenAI, Google, AWS, etc.
+    - **API Key Management**: Secure storage of credentials
+    - **Model Configuration**: Custom model settings and parameters
+    - **Rate Limiting**: Control API usage and costs
+  </Tab>
+</Tabs>
+
+### AI Behavior Settings
+
+<AccordionGroup>
+  <Accordion title="Response Style">
+    **Customize how AI responds to your requests**
+    
+    - **Explanation Detail Level**: Brief, detailed, or educational
+    - **Code Style Preferences**: Coding standards and conventions
+    - **Language Preferences**: Preferred frameworks and patterns
+    - **Error Handling Approach**: How to suggest fixes and improvements
+  </Accordion>
+  
+  <Accordion title="Custom Instructions">
+    **Personalize AI behavior with custom instructions**
+    
+    - **Project Context**: Describe your project and goals
+    - **Coding Preferences**: Preferred patterns, libraries, and approaches
+    - **Communication Style**: How you want the AI to communicate
+    - **Specific Requirements**: Industry standards, compliance needs
+    
+    **Example Custom Instructions:**
+    ```
+    I'm working on a React TypeScript project using Next.js 13+ with:
+    - App Router (not Pages Router)
+    - Tailwind CSS for styling
+    - Prisma for database operations
+    - Prefer functional components with hooks
+    - Always include error handling and loading states
+    ```
+  </Accordion>
+  
+  <Accordion title="Code Completion">
+    **Configure intelligent code completion behavior**
+    
+    - **Completion Triggers**: When to show suggestions
+    - **Suggestion Length**: Single line vs. multi-line completions
+    - **Context Window**: How much surrounding code to consider
+    - **Language Filters**: Enable/disable for specific file types
+  </Accordion>
+</AccordionGroup>
+
+### User Interface Settings
+
+<CardGroup cols={2}>
+  <Card title="Sidebar Configuration" icon="sidebar">
+    - Panel position and size
+    - Default views and tabs
+    - Conversation history display
+    - Quick action buttons
+  </Card>
+  <Card title="Editor Integration" icon="code">
+    - Inline suggestion appearance
+    - Error highlighting styles
+    - Command palette integration
+    - Context menu options
+  </Card>
+</CardGroup>
+
+## Keyboard Shortcuts
+
+Customize all keyboard shortcuts for faster access:
+
+<AccordionGroup>
+  <Accordion title="AI Commands">
+    **Default shortcuts for core features**
+    
+    - `Ctrl+L` - Explain selected code
+    - `Ctrl+Shift+F` - Fix selected code
+    - `Ctrl+I` - Improve selected code
+    - `Ctrl+Shift+E` - Open Elastic Copilot panel
+    
+    **Customization**: Modify in VS Code's Keyboard Shortcuts (`Ctrl+K Ctrl+S`)
+  </Accordion>
+  
+  <Accordion title="Chat & Completion">
+    **Shortcuts for interactive features**
+    
+    - `Tab` - Accept code completion
+    - `Esc` - Dismiss completion
+    - `Ctrl+Space` - Trigger completion manually
+    - `Alt+]` / `Alt+[` - Navigate suggestions
+  </Accordion>
+  
+  <Accordion title="Custom Shortcuts">
+    Create your own shortcuts for:
+    - Specific AI commands
+    - Custom instructions
+    - Tool operations
+    - Workflow automation
+  </Accordion>
+</AccordionGroup>
+
+## Advanced Configuration
+
+### Auto-Approval Settings
+
+Control which operations require your approval:
+
+<CardGroup cols={2}>
+  <Card title="File Operations" icon="file">
+    - Reading files: Auto-approve or require permission
+    - Writing files: Always, never, or ask each time
+    - Directory operations: Listing and navigation
+  </Card>
+  <Card title="Terminal Commands" icon="terminal">
+    - Safe commands: npm install, git status
+    - Potentially destructive: rm, git reset
+    - Custom command patterns
+  </Card>
+  <Card title="MCP Tools" icon="puzzle-piece">
+    - Database operations: Read vs. write permissions
+    - External API calls: Always require approval
+    - Custom tool permissions
+  </Card>
+  <Card title="Browser Automation" icon="globe">
+    - Web page visits: Auto-approve trusted domains
+    - Screenshot capture: Always allow
+    - Form submissions: Require approval
+  </Card>
+</CardGroup>
+
+### Memory Bank Configuration
+
+<AccordionGroup>
+  <Accordion title="Project Memory">
+    **Configure how Elastic Copilot remembers your project**
+    
+    - **Memory Bank Location**: Where to store project documentation
+    - **Auto-Update**: Automatically update memory with changes
+    - **Context Inclusion**: What information to include
+    - **Retention Policy**: How long to keep historical information
+  </Accordion>
+  
+  <Accordion title="Personal Preferences">
+    **Store your coding preferences and patterns**
+    
+    - **Preferred Libraries**: React, Vue, Angular preferences
+    - **Code Style**: Formatting and naming conventions
+    - **Architecture Patterns**: MVC, microservices, etc.
+    - **Testing Approach**: Unit tests, integration tests, etc.
+  </Accordion>
+</AccordionGroup>
+
+## Workspace-Specific Settings
+
+Override global settings for specific projects:
+
+<Steps>
+  <Step title="Create Workspace Settings">
+    Create `.vscode/settings.json` in your project root
+  </Step>
+  <Step title="Configure Project Preferences">
+    Set project-specific API providers, custom instructions, or tool permissions
+  </Step>
+  <Step title="Team Sharing">
+    Share configurations with your team via version control
+  </Step>
+</Steps>
+
+**Example Workspace Settings:**
+```json
+{
+  "elastic-copilot.customInstructions": "This is a React TypeScript project. Use modern hooks and functional components.",
+  "elastic-copilot.autoApproval.fileRead": true,
+  "elastic-copilot.autoApproval.terminalCommands": ["npm", "yarn", "git status"],
+  "elastic-copilot.preferredApiProvider": "anthropic"
+}
+```
+
+## Privacy & Security Settings
+
+<AccordionGroup>
+  <Accordion title="Data Sharing">
+    **Control what data is shared with AI models**
+    
+    - **Code Context**: How much code to include in requests
+    - **File Filtering**: Exclude sensitive files (config, secrets)
+    - **Request Logging**: Log AI interactions for debugging
+    - **Telemetry**: Usage analytics and error reporting
+  </Accordion>
+  
+  <Accordion title="Local Processing">
+    **Configure local vs. remote processing**
+    
+    - **Tree-sitter Parsing**: Always local
+    - **File Operations**: Local file system access
+    - **Sensitive Data Detection**: Local scanning for secrets
+    - **Cache Management**: Local caching policies
+  </Accordion>
+</AccordionGroup>
+
+## Export & Import Settings
+
+<CardGroup cols={2}>
+  <Card title="Export Configuration" icon="download">
+    Save your settings for backup or sharing with team members
+  </Card>
+  <Card title="Import Configuration" icon="upload">
+    Restore settings from backup or apply team configurations
+  </Card>
+</CardGroup>
+
+## Performance Tuning
+
+<AccordionGroup>
+  <Accordion title="Resource Management">
+    - **Memory Usage**: Limit cache size and conversation history
+    - **CPU Usage**: Control background processing intensity
+    - **Network**: Optimize API call frequency and batch requests
+    - **File Watching**: Configure which files to monitor for changes
+  </Accordion>
+  
+  <Accordion title="Response Times">
+    - **Completion Delays**: Balance speed vs. accuracy
+    - **Request Timeouts**: Set maximum wait times
+    - **Parallel Processing**: Enable concurrent operations
+    - **Caching Strategies**: Optimize for your workflow
+  </Accordion>
+</AccordionGroup>
+
+## Configuration Best Practices
+
+<Tip>
+  **Start Simple**: Begin with default settings and customize gradually as you discover what works best for your workflow.
+</Tip>
+
+<Tip>
+  **Team Consistency**: Use workspace settings to ensure team members have consistent AI behavior and code style preferences.
+</Tip>
+
+<Tip>
+  **Security First**: Review auto-approval settings regularly and be conservative with permissions for external tools.
+</Tip>
+
+<Tip>
+  **Backup Settings**: Export your configuration regularly, especially before making major changes.
+</Tip>
+
+## Getting Help
+
+<CardGroup cols={1}>
+  <Card title="Specific Settings" icon="gear" href="/configuration/api-providers">
+    Detailed guides for API providers, shortcuts, and workspace settings
+  </Card>
+  <Card title="Troubleshooting" icon="life-ring" href="/support/troubleshooting">
+    Solutions for common configuration issues and problems
+  </Card>
+  <Card title="Community" icon="users" href="mailto:support@elasticapp.io">
+    Get help from other users and the Elastic Copilot team
+  </Card>
+</CardGroup> 

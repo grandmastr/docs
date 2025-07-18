@@ -1,0 +1,245 @@
+---
+title: "Terminal Mentions"
+description: "Share recent terminal output with complete formatting and context"
+---
+
+Terminal mentions let you reference your recent terminal output using `@terminal`. When you mention terminal output, Elastic sees the complete output with formatting preserved, perfect for debugging build errors, test failures, or command results.
+
+## How Terminal Mentions Work
+
+When you type `@terminal` in the chat input, Elastic automatically captures:
+
+- **Recent terminal output** - The last several lines of terminal activity
+- **Command history** - What commands were executed
+- **Error messages** - Complete error output and stack traces
+- **Formatting** - Colors, indentation, and structure preserved
+- **Context** - Working directory and environment information
+
+## Syntax
+
+```
+@terminal
+```
+
+Simple and automatic - just type `@terminal` and Elastic will include your recent terminal output.
+
+## What Elastic Sees
+
+When you mention terminal output, Elastic receives:
+
+1. **Complete output** - All recent terminal text
+2. **Command context** - What commands were run
+3. **Error details** - Full error messages and stack traces
+4. **Formatting** - Original colors and structure
+5. **Timestamps** - When commands were executed
+6. **Working directory** - Current path context
+
+## Best Practices
+
+### When to Use Terminal Mentions
+
+- **Build errors**: `@terminal The build is failing with these errors`
+- **Test failures**: `@terminal Tests are not passing`
+- **Command help**: `@terminal What does this error mean?`
+- **Installation issues**: `@terminal Package installation failed`
+- **Script debugging**: `@terminal My script isn't working correctly`
+
+### Combining with File Mentions
+
+Connect terminal output to specific files:
+
+```
+@terminal @/package.json 
+The npm install is failing
+```
+
+### Combining with Problem Mentions
+
+Get comprehensive debugging context:
+
+```
+@terminal @problems 
+The build errors match these workspace problems
+```
+
+## Types of Terminal Output
+
+### Build Output
+- Compilation results
+- Bundling information
+- Asset generation
+- Error messages
+
+### Test Results
+- Test suite execution
+- Pass/fail status
+- Coverage reports
+- Performance metrics
+
+### Package Management
+- Installation logs
+- Dependency resolution
+- Version conflicts
+- Registry issues
+
+### Git Operations
+- Commit messages
+- Merge conflicts
+- Branch operations
+- Push/pull results
+
+### Development Servers
+- Server startup logs
+- Request/response info
+- Error messages
+- Performance data
+
+## Common Terminal Scenarios
+
+### Build Failures
+```
+@terminal 
+The TypeScript compilation is failing
+```
+
+### Test Debugging
+```
+@terminal 
+These test failures don't make sense
+```
+
+### Installation Problems
+```
+@terminal 
+I can't install this package
+```
+
+### Server Issues
+```
+@terminal 
+The development server won't start
+```
+
+### Git Conflicts
+```
+@terminal 
+I'm having trouble with this merge
+```
+
+## Tips for Effective Terminal Mentions
+
+1. **Capture immediately**: Use `@terminal` right after seeing errors
+2. **Include context**: Mention what you were trying to do
+3. **Show the command**: Include the command that caused the issue
+4. **Be specific**: Ask about particular error messages
+5. **Combine mentions**: Use with relevant file or folder mentions
+
+## Integration with Memory Bank
+
+Terminal mentions help Elastic learn:
+
+- **Common commands**: Your frequently used terminal commands
+- **Error patterns**: Recurring issues and their solutions
+- **Development workflow**: How you use the terminal
+- **Environment setup**: Your development environment preferences
+
+## Advanced Use Cases
+
+### Debugging Complex Builds
+```
+@terminal @/webpack.config.js 
+The webpack build is producing strange output
+```
+
+### Performance Analysis
+```
+@terminal 
+These performance metrics look concerning
+```
+
+### Environment Issues
+```
+@terminal 
+Something is wrong with my development environment
+```
+
+### Deployment Problems
+```
+@terminal 
+The deployment script is failing
+```
+
+### Database Operations
+```
+@terminal 
+The database migration didn't work
+```
+
+## Combining with Other Mentions
+
+### With File Mentions
+```
+@terminal @/src/server.js 
+The server file is causing these errors
+```
+
+### With Folder Mentions
+```
+@terminal @/tests/ 
+All the tests in this folder are failing
+```
+
+### With Problem Mentions
+```
+@terminal @problems 
+The terminal errors match these workspace diagnostics
+```
+
+### With Git Mentions
+```
+@terminal @git-changes 
+My recent changes are causing build failures
+```
+
+## Terminal Output Limitations
+
+### Output Length
+- Very long output might be truncated
+- Elastic focuses on the most recent and relevant lines
+- Ask for specific parts if needed
+
+### Binary Output
+- Non-text output is typically excluded
+- Binary files and data are filtered out
+- Focus on text-based terminal output
+
+### Sensitive Information
+- Be careful with terminal output containing:
+  - API keys or passwords
+  - Personal information
+  - Internal system details
+
+## Troubleshooting Terminal Mentions
+
+### No Terminal Output
+If `@terminal` shows nothing:
+- Make sure you've run commands recently
+- Check if the terminal is active
+- Try running a simple command first
+- Verify terminal integration is working
+
+### Incomplete Output
+If output seems truncated:
+- Ask for specific error messages
+- Use file mentions to show relevant code
+- Break down complex issues into smaller parts
+- Focus on the most critical error lines
+
+### Formatting Issues
+If formatting is lost:
+- Mention specific error codes or messages
+- Describe what you were trying to do
+- Use quotes around specific error text
+- Ask Elastic to focus on particular lines
+
+Terminal mentions are invaluable for debugging and getting help with command-line issues, making them essential for development workflow support and troubleshooting. 

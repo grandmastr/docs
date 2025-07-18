@@ -1,0 +1,292 @@
+---
+title: "MCP Servers"
+description: "Connect Elastic to external tools, databases, and services through Model Context Protocol"
+---
+
+MCP (Model Context Protocol) Servers extend Elastic's capabilities by connecting it to external tools, databases, and services. This integration allows Elastic to interact with your development environment, access external data sources, and perform operations beyond its core functionality.
+
+## How MCP Works in Elastic
+
+MCP Servers are external processes that Elastic connects to through the Model Context Protocol. The **MCP Hub** manages these connections and provides two main capabilities:
+
+- **Tools**: Executable functions that Elastic can call using the `use_mcp_tool` command
+- **Resources**: Data sources and content that Elastic can access using the `access_mcp_resource` command
+
+When you ask Elastic to perform tasks that require external capabilities (like database operations, API calls, or file processing), it can automatically use connected MCP servers to fulfill these requests.
+
+## Configuration
+
+### MCP Settings File
+
+Elastic stores MCP server configurations in a file called `elastic_mcp_settings.json` located in your Elastic settings directory. This file is automatically created when you first use MCP features.
+
+### Basic Configuration Structure
+
+```json
+{
+  "mcpServers": {
+    "server-name": {
+      "command": "command-to-run",
+      "args": ["argument1", "argument2"],
+      "env": {
+        "ENVIRONMENT_VARIABLE": "value"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+### Configuration Options
+
+- **command**: The executable command to start the server
+- **args**: Array of command-line arguments
+- **env**: Environment variables (used for API keys, connection strings, etc.)
+- **disabled**: Set to `true` to disable the server without removing it
+- **autoApprove**: Array of tool names that don't require user approval
+
+## Getting Started
+
+### 1. Access MCP Settings
+
+From the Elastic Copilot extension:
+1. Click the **MCP Server** tab
+2. Click **Edit MCP Settings**
+3. The `elastic_mcp_settings.json` file will open in VS Code
+
+### 2. Add Your First Server
+
+Start with the MCP installer to easily add more servers:
+
+<Tabs>
+  <Tab title="Windows">
+    ```json
+    {
+      "mcpServers": {
+        "mcp-installer": {
+          "command": "cmd.exe",
+          "args": ["/c", "npx", "-y", "@anaisbetts/mcp-installer"],
+          "disabled": false,
+          "autoApprove": []
+        }
+      }
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Mac & Linux">
+    ```json
+    {
+      "mcpServers": {
+        "mcp-installer": {
+          "command": "npx",
+          "args": ["@anaisbetts/mcp-installer"],
+          "disabled": false,
+          "autoApprove": []
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### 3. Save and Connect
+
+After saving the file:
+- Elastic automatically detects the changes
+- The server is downloaded and started
+- You'll see the connection status in the MCP settings UI
+
+## Pre-configured Server Examples
+
+Elastic comes with example configurations for popular MCP servers. Here are some servers you can easily add:
+
+### Database Servers
+
+```json
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "uv",
+      "args": ["--directory", "/path/to/servers/sqlite", "run", "mcp-server-sqlite", "--db-path", "~/test.db"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://localhost/mydb"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "mongodb": {
+      "command": "npx",
+      "args": ["-y", "mcp-mongo-server", "mongodb://user:pass@localhost/database"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "redis": {
+      "command": "npx",
+      "args": ["@gongrzhe/server-redis-mcp@1.0.0", "redis://localhost:6379"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+### Development Tools
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "gitlab": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gitlab"],
+      "env": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>",
+        "GITLAB_API_URL": "https://gitlab.com/api/v4"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+### Cloud & Automation
+
+```json
+{
+  "mcpServers": {
+    "aws": {
+      "command": "uv",
+      "args": ["--directory", "/path/to/mcp-server-aws", "run", "mcp-server-aws"],
+      "env": {
+        "AWS_ACCESS_KEY_ID": "<YOUR_AWS_ACCESS_KEY>",
+        "AWS_SECRET_ACCESS_KEY": "<YOUR_AWS_SECRET_KEY>",
+        "AWS_REGION": "us-east-1"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+## How Elastic Uses MCP Servers
+
+### Automatic Integration
+
+When you ask Elastic to perform tasks that require external capabilities, it automatically:
+
+1. **Detects the need** for external tools (e.g., "query my database", "create a GitHub issue")
+2. **Checks available servers** for tools that can fulfill the request
+3. **Requests permission** to use the appropriate MCP tool (unless auto-approved)
+4. **Executes the tool** and incorporates the results into its response
+
+### Tool Usage
+
+Elastic uses MCP servers through two main commands:
+
+- **`use_mcp_tool`**: Execute a function provided by an MCP server
+- **`access_mcp_resource`**: Read data from an MCP server resource
+
+### Auto-Approval
+
+Configure tools that don't require user approval:
+
+```json
+{
+  "mcpServers": {
+    "sqlite": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-sqlite", "--db-path", "./database.db"],
+      "autoApprove": ["read_query", "list_tables", "describe_table"]
+    }
+  }
+}
+```
+
+
+
+## Creating Custom MCP Servers
+
+Elastic can help you create custom MCP servers when you need specific functionality:
+
+### When to Create Custom Servers
+
+Ask Elastic to create a custom MCP server when you need:
+- Integration with APIs not covered by existing servers
+- Custom data processing or transformation tools
+- Specialized workflow automation
+- Company-specific integrations
+
+### How Elastic Creates Servers
+
+When you ask Elastic to "add a tool" or create custom functionality, it will:
+
+1. **Analyze your requirements** and determine if an MCP server is needed
+2. **Create the server code** in your configured MCP servers directory
+3. **Handle authentication setup** including API keys and tokens
+4. **Add the server configuration** to your `elastic_mcp_settings.json`
+5. **Test the connection** and verify functionality
+
+### Example: Creating a Weather Server
+
+You can ask Elastic: *"Add a tool to get weather forecasts for cities"*
+
+Elastic will:
+- Create a custom weather MCP server
+- Guide you through getting an API key from OpenWeatherMap
+- Configure the server in your settings
+- Test the integration
+
+
+
+## Security and Permissions
+
+### Environment Variables
+
+Store sensitive information like API keys in environment variables:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+---
+
+MCP Servers extend Elastic's capabilities beyond code assistance into a complete development ecosystem. Start with pre-built servers and gradually add custom integrations as your needs grow. 

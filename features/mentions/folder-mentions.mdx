@@ -1,0 +1,162 @@
+---
+title: "Folder Mentions"
+description: "Reference entire directories with complete structure and file contents"
+---
+
+Folder mentions let you reference entire directories using `@/path/to/folder/` syntax. When you mention a folder, Elastic sees the complete directory structure and all file contents, perfect for understanding complex interactions between multiple files.
+
+## How Folder Mentions Work
+
+When you type `@` in the chat input and navigate to folders, Elastic shows you:
+
+- **Directory structure**: Complete folder hierarchy
+- **File listings**: All files within the folder
+- **Nested folders**: Subdirectories and their contents
+
+## Syntax
+
+```
+@/path/to/folder/
+```
+
+Examples:
+- `@/src/components/`
+- `@/utils/`
+- `@/api/auth/`
+- `@/tests/`
+
+## What Elastic Sees
+
+When you mention a folder, Elastic receives:
+
+1. **Complete directory structure** - All files and subfolders
+2. **All file contents** - Every file within the folder
+3. **Relationships** - How files interact and depend on each other
+4. **Architecture patterns** - Organizational structure and conventions
+
+## Best Practices
+
+### When to Use Folder Mentions
+
+- **Architecture review**: `@/src/components/ How is this component library organized?`
+- **Feature analysis**: `@/api/auth/ Explain the authentication system`
+- **Testing**: `@/tests/ Run through the test coverage`
+- **Documentation**: `@/docs/ Update the documentation structure`
+
+### Combining with File Mentions
+
+Mix folder and file mentions for comprehensive context:
+
+```
+@/src/components/ @/src/styles/components.css 
+The component styling system needs refactoring
+```
+
+### Multiple Folder Mentions
+
+Reference multiple directories to show relationships:
+
+```
+@/frontend/components/ @/backend/api/ 
+How do these frontend components connect to the backend?
+```
+
+## Folder Types and Use Cases
+
+### Source Code Directories
+```
+@/src/
+@/lib/
+@/components/
+```
+Perfect for understanding code organization and architecture.
+
+### Configuration Directories
+```
+@/config/
+@/.github/
+@/scripts/
+```
+Ideal for setup, deployment, and automation questions.
+
+### Documentation Directories
+```
+@/docs/
+@/examples/
+@/guides/
+```
+Great for documentation updates and examples.
+
+### Test Directories
+```
+@/tests/
+@/__tests__/
+@/spec/
+```
+Excellent for test coverage and quality assurance.
+
+## Tips for Effective Folder Mentions
+
+1. **Use trailing slash**: Always end with `/` to indicate a folder
+2. **Be strategic**: Large folders might overwhelm the context
+3. **Combine wisely**: Mix with specific file mentions for focus
+4. **Consider scope**: Start with smaller folders for targeted questions
+5. **Think hierarchically**: Use parent/child folder relationships
+
+## Integration with Memory Bank
+
+Folder mentions help Elastic understand:
+
+- **Project architecture**: How you organize code
+- **Naming conventions**: Your folder and file naming patterns
+- **Dependency patterns**: How different parts of your project connect
+- **Development workflow**: Your preferred project structure
+
+## Common Use Cases
+
+### Architecture Analysis
+```
+@/src/
+Can you analyze the overall architecture of this application?
+```
+
+### Feature Development
+```
+@/api/users/ 
+Add role-based permissions to the user management system
+```
+
+### Code Organization
+```
+@/components/ 
+Help me reorganize these components by feature
+```
+
+### Migration Planning
+```
+@/legacy/ @/modern/ 
+Plan the migration from legacy to modern architecture
+```
+
+### Testing Strategy
+```
+@/tests/unit/ @/tests/integration/ 
+Review the testing strategy and coverage
+```
+
+## Performance Considerations
+
+- **Large folders**: Very large directories might be truncated
+- **Deep nesting**: Deeply nested structures might be simplified
+- **File limits**: Folders with many files might show summaries
+- **Binary files**: Non-text files are typically excluded
+
+## Combining with Other Mentions
+
+Folder mentions work excellently with:
+
+- **Problem mentions**: `@/src/components/ @problems Fix all component errors`
+- **Terminal mentions**: `@/build/ @terminal Why is the build failing?`
+- **Git mentions**: `@/src/ @git-changes Review the recent changes`
+
+Folder mentions provide the broadest context for understanding how different parts of your project work together, making them essential for architectural discussions and large-scale refactoring. 

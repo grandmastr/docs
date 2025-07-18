@@ -1,0 +1,301 @@
+---
+title: MCP Quick Start Guide
+description: Get started with Model Context Protocol (MCP) servers in Elastic Copilot
+icon: rocket
+---
+
+# MCP Quick Start Guide
+
+## What's an MCP Server?
+
+Think of MCP servers as special helpers that give Elastic Copilot extra powers! They let Elastic Copilot do amazing things like:
+
+- Connect to databases (PostgreSQL, MongoDB, SQLite)
+- Fetch web pages and content
+- Integrate with GitHub/GitLab
+- Work with cloud services (AWS)
+- Automate browser interactions
+- Create custom integrations
+
+<CardGroup cols={2}>
+  <Card title="Pre-built Servers" icon="download">
+    Ready-to-use integrations for popular services and databases
+  </Card>
+  <Card title="Custom Servers" icon="code">
+    Build your own integrations for specific workflows and APIs
+  </Card>
+</CardGroup>
+
+## System Requirements
+
+<Warning>
+  Before proceeding, ensure you have these requirements installed:
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Node.js (Required)">
+    **Latest Node.js v18 or newer**
+    
+    Check: `node --version`
+    
+    Install from: [nodejs.org](https://nodejs.org/)
+  </Accordion>
+  
+  <Accordion title="Python (Required)">
+    **Python v3.8 or newer**
+    
+    Check: `python --version`
+    
+    Install from: [python.org](https://python.org/)
+  </Accordion>
+  
+  <Accordion title="UV Package Manager (Required)">
+    **UV for Python package management**
+    
+    Install: `pip install uv`
+    
+    Check: `uv --version`
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  If any of these commands fail or show older versions, please install/update before continuing!
+</Note>
+
+## Quick Setup Steps
+
+### 1. Install Your First MCP Server
+
+<Steps>
+  <Step title="Open MCP Settings">
+    From the Elastic Copilot extension, click the **MCP Server** tab, then click **Edit MCP Settings**
+    
+    ![MCP Server Panel](https://github.com/user-attachments/assets/abf908b1-be98-4894-8dc7-ef3d27943a47)
+  </Step>
+  
+  <Step title="Configure MCP Installer">
+    The MCP settings file will open in VS Code. Replace its contents with the configuration for your platform:
+    
+    <Tabs>
+      <Tab title="Windows">
+        ```json
+        {
+          "mcpServers": {
+            "mcp-installer": {
+              "command": "cmd.exe",
+              "args": ["/c", "npx", "-y", "@anaisbetts/mcp-installer"]
+            }
+          }
+        }
+        ```
+      </Tab>
+      
+      <Tab title="Mac & Linux">
+        ```json
+        {
+          "mcpServers": {
+            "mcp-installer": {
+              "command": "npx",
+              "args": ["@anaisbetts/mcp-installer"]
+            }
+          }
+        }
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  
+  <Step title="Save and Connect">
+    After saving the file:
+    - Elastic Copilot will detect the change automatically
+    - The MCP installer will be downloaded and started
+    - You'll see the server status in the MCP settings UI
+    
+    ![MCP Server Panel with Installer](https://github.com/user-attachments/assets/2abbb3de-e902-4ec2-a5e5-9418ed34684e)
+  </Step>
+</Steps>
+
+## Adding More Servers
+
+Now that you have the MCP installer, you can ask Elastic Copilot to add more servers! Here are some popular options:
+
+### Available MCP Servers
+
+<CardGroup cols={2}>
+  <Card title="Database Servers" icon="database">
+    - **PostgreSQL**: Full database operations
+    - **MongoDB**: Document database integration  
+    - **SQLite**: Lightweight local databases
+    - **Redis**: Key-value store operations
+  </Card>
+  <Card title="Development Tools" icon="code-branch">
+    - **GitHub**: Repository and issue management
+    - **GitLab**: CI/CD and project management
+    - **AWS**: Cloud service integration
+    - **Puppeteer**: Browser automation
+  </Card>
+  <Card title="Content & APIs" icon="globe">
+    - **Fetch**: Web content retrieval
+    - **REST APIs**: Custom API integrations
+    - **File System**: Advanced file operations
+    - **Email**: SMTP and email automation
+  </Card>
+  <Card title="Analytics & AI" icon="chart-bar">
+    - **Vector Databases**: Chroma, Pinecone
+    - **Analytics**: Data processing tools
+    - **ML Models**: Custom model integration
+    - **Monitoring**: Application monitoring
+  </Card>
+</CardGroup>
+
+### Installing Servers with AI
+
+You can ask Elastic Copilot to install any MCP server from:
+
+- **NPM Registry**: [npmjs.com/search?q=@modelcontextprotocol](https://www.npmjs.com/search?q=%40modelcontextprotocol)
+- **Python Package Index**: [pypi.org/search/?q=mcp+server](https://pypi.org/search/?q=mcp+server-&o=)
+
+**Example Request:**
+```
+"Install the MCP server named `mcp-server-fetch`:
+- Ensure the MCP settings are updated
+- Use uvx or python to run the server"
+```
+
+Elastic Copilot will:
+1. Install the Python package
+2. Update the MCP settings JSON file  
+3. Start the server automatically
+
+### Example: Adding Fetch Server
+
+After installing `mcp-server-fetch`, your settings file will look like:
+
+<Tabs>
+  <Tab title="Windows">
+    ```json
+    {
+      "mcpServers": {
+        "mcp-installer": {
+          "command": "cmd.exe", 
+          "args": ["/c", "npx", "-y", "@anaisbetts/mcp-installer"]
+        },
+        "mcp-server-fetch": {
+          "command": "uvx",
+          "args": ["mcp-server-fetch"]
+        }
+      }
+    }
+    ```
+  </Tab>
+  
+  <Tab title="Mac & Linux">
+    ```json
+    {
+      "mcpServers": {
+        "mcp-installer": {
+          "command": "npx",
+          "args": ["@anaisbetts/mcp-installer"]
+        },
+        "mcp-server-fetch": {
+          "command": "uvx", 
+          "args": ["mcp-server-fetch"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Using MCP Tools
+
+Once servers are installed, you can use their tools in chat:
+
+<CardGroup cols={1}>
+  <Card title="Database Queries" icon="database">
+    "Connect to my PostgreSQL database and show me all users created this week"
+  </Card>
+  <Card title="Web Content" icon="globe">
+    "Fetch the latest documentation from this URL and summarize the key changes"
+  </Card>
+  <Card title="GitHub Integration" icon="code-branch">
+    "Create a new issue in my GitHub repository about the bug we just discussed"
+  </Card>
+  <Card title="File Operations" icon="folder">
+    "Search through all my project files for functions that handle user authentication"
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Using asdf and Getting 'unknown command: npx'">
+    If you're using `asdf`, you'll need to add environment variables to your server configurations:
+    
+    ```json
+    "env": {
+      "PATH": "/Users/<username>/.asdf/shims:/usr/bin:/bin",
+      "ASDF_DIR": "<path_to_asdf_bin_dir>",
+      "ASDF_DATA_DIR": "/Users/<username>/.asdf",
+      "ASDF_NODEJS_VERSION": "<your_node_version>"
+    }
+    ```
+    
+    Add this to your Custom Instructions to automate the process:
+    
+    > When installing MCP servers and editing the elastic_mcp_settings.json, if the server requires use of `npx` as the command, you must copy the "env" entry from the "mcp-installer" entry and add it to the new entry.
+  </Accordion>
+  
+  <Accordion title="MCP Installer Errors">
+    If you're getting errors:
+    
+    1. **Check the MCP settings file** for syntax errors
+    2. **Read the server documentation** to verify command and arguments
+    3. **Test manually** by running the command in terminal to see the actual error
+    4. **Check prerequisites** - ensure Node.js, Python, and UV are properly installed
+  </Accordion>
+  
+  <Accordion title="Server Connection Issues">
+    - Verify all required dependencies are installed
+    - Check that the server command path is correct
+    - Look at the MCP panel for specific error messages
+    - Try restarting VS Code after configuration changes
+  </Accordion>
+</AccordionGroup>
+
+### Testing Your Setup
+
+Verify everything is working:
+
+<Steps>
+  <Step title="Check Server Status">
+    Look at the MCP panel in Elastic Copilot - all servers should show "Connected"
+  </Step>
+  <Step title="Test Basic Function">
+    Ask Elastic Copilot: "What MCP tools do you have available?"
+  </Step>
+  <Step title="Try a Simple Command">
+    If you have fetch server: "Use the fetch tool to get the content from https://example.com"
+  </Step>
+</Steps>
+
+## What's Next?
+
+<CardGroup cols={1}>
+  <Card title="Available Servers" icon="server" href="/mcp/available-servers">
+    Explore the full catalog of pre-built MCP servers
+  </Card>
+  <Card title="Creating Custom Servers" icon="code" href="/mcp/creating-custom-servers">
+    Learn how to build your own MCP integrations
+  </Card>
+  <Card title="Advanced Configuration" icon="gear" href="/mcp/troubleshooting">
+    Deep dive into MCP configuration and troubleshooting
+  </Card>
+  <Card title="Auto-Approval Settings" icon="shield-check" href="/configuration/auto-approval">
+    Configure which MCP operations can run automatically
+  </Card>
+</CardGroup>
+
+🎉 **Congratulations!** You've just given Elastic Copilot some awesome new abilities through MCP integration! 

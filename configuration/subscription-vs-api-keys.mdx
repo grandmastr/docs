@@ -1,0 +1,388 @@
+---
+title: Subscription vs API Keys
+description: Choose between Elastic subscription and direct API provider access
+icon: balance-scale
+---
+
+# Subscription vs API Keys
+
+Elastic Copilot offers two ways to access AI models: through an Elastic subscription or by using your own API keys with direct providers. This guide helps you choose the best option for your needs.
+
+## Quick Comparison
+
+<CardGroup cols={2}>
+  <Card title="Subscription Mode" icon="credit-card">
+    **Best for most users**
+    ✅ No API keys required
+    ✅ Unified billing
+    ✅ Latest models automatically
+    ✅ Managed infrastructure
+    ❌ Per-use pricing
+    ❌ Less control over usage
+  </Card>
+  <Card title="Direct API Keys" icon="key">
+    **Best for advanced users**
+    ✅ Direct provider billing
+    ✅ Full usage control
+    ✅ Multiple provider options
+    ✅ Custom model parameters
+    ❌ Requires API key management
+    ❌ Setup complexity
+  </Card>
+</CardGroup>
+
+## Detailed Comparison
+
+### Ease of Use
+
+<Tabs>
+  <Tab title="Subscription Mode">
+    **Setup Time: ~2 minutes**
+    
+    <Steps>
+      <Step title="Sign In">
+        One-click authentication with your browser
+      </Step>
+      <Step title="Choose Plan">
+        Select subscription tier that fits your usage
+      </Step>
+      <Step title="Start Coding">
+        Immediately begin using AI features
+      </Step>
+    </Steps>
+    
+    **Pros:**
+    - Zero configuration required
+    - Works immediately after sign-up
+    - No API key management
+    - Automatic updates to new models
+    
+    **Cons:**
+    - Less control over specific model parameters
+    - Tied to Elastic's model availability
+  </Tab>
+  
+  <Tab title="Direct API Keys">
+    **Setup Time: ~10-30 minutes per provider**
+    
+    <Steps>
+      <Step title="Create Provider Accounts">
+        Sign up with Anthropic, OpenAI, Google, etc.
+      </Step>
+      <Step title="Generate API Keys">
+        Create and secure API keys for each provider
+      </Step>
+      <Step title="Configure Elastic">
+        Enter credentials and configure each provider
+      </Step>
+      <Step title="Test Connections">
+        Verify each provider works correctly
+      </Step>
+    </Steps>
+    
+    **Pros:**
+    - Full control over model selection
+    - Direct relationship with providers
+    - Custom model parameters and settings
+    - Can use multiple providers simultaneously
+    
+    **Cons:**
+    - Requires managing multiple API keys
+    - Need to understand each provider's pricing
+    - Manual updates when new models are released
+    - Separate billing from multiple providers
+  </Tab>
+</Tabs>
+
+### Cost Structure
+
+<AccordionGroup>
+  <Accordion title="Subscription Mode Pricing">
+    **Transparent, usage-based pricing**
+    
+    | Plan | Monthly Price | Included Usage | Overage Rate |
+    |------|---------------|----------------|--------------|
+    | **Free** | $0 | Limited monthly tokens | Not available |
+    | **Pro** | $20 | Generous token allowance | $0.02/1K tokens |
+    | **Team** | $50/user | High usage limits | $0.015/1K tokens |
+    | **Enterprise** | Custom | Unlimited usage | Custom rates |
+    
+    **What's Included:**
+    - Access to all available models
+    - No setup or maintenance costs
+    - Usage analytics and tracking
+    - Priority support
+    - Automatic model updates
+    
+    **Best For:**
+    - Individual developers
+    - Small to medium teams
+    - Users who want predictable pricing
+    - Those who prefer simple billing
+  </Accordion>
+  
+  <Accordion title="Direct Provider Pricing">
+    **Variable pricing per provider**
+    
+    **Example Monthly Costs (Heavy Usage):**
+    
+    | Provider | Model | Input Cost | Output Cost | Est. Monthly |
+    |----------|-------|------------|-------------|--------------|
+    | **Anthropic** | Claude 3.5 Sonnet | $3/M tokens | $15/M tokens | $30-150 |
+    | **OpenAI** | GPT-4 Turbo | $10/M tokens | $30/M tokens | $50-200 |
+    | **Google** | Gemini Pro | $0.50/M tokens | $1.50/M tokens | $10-50 |
+    | **AWS Bedrock** | Claude 3 | $3/M tokens | $15/M tokens | $35-175 |
+    
+    **Additional Considerations:**
+    - Separate billing from each provider
+    - Different pricing models and tiers
+    - Rate limits and quota management
+    - Currency fluctuations (international providers)
+    
+    **Best For:**
+    - Large enterprises with specific requirements
+    - Users with existing provider relationships
+    - Those who need maximum cost control
+    - Organizations with compliance requirements
+  </Accordion>
+</AccordionGroup>
+
+### Model Access & Features
+
+<CardGroup cols={2}>
+  <Card title="Subscription Models" icon="stars">
+    **Latest models automatically available**
+    
+    - Claude 3.5 Sonnet, Opus, Haiku
+    - GPT-4, GPT-4 Turbo, o1-preview
+    - Gemini Pro, Gemini Pro Vision
+    - Mistral Large, DeepSeek, and more
+    
+    **Features:**
+    - Automatic model updates
+    - Optimized model routing
+    - Load balancing across providers
+    - Fallback when models are unavailable
+  </Card>
+  <Card title="Direct Provider Models" icon="settings">
+    **Full control over model selection**
+    
+    - Choose specific model versions
+    - Configure custom parameters
+    - Set temperature, top-p, max tokens
+    - Use beta/preview models
+    
+    **Features:**
+    - Granular control over each request
+    - Provider-specific features
+    - Custom model fine-tuning (where available)
+    - Direct access to provider updates
+  </Card>
+</CardGroup>
+
+### Security & Privacy
+
+<Tabs>
+  <Tab title="Subscription Mode">
+    **Elastic-managed security**
+    
+    **Data Handling:**
+    - Code sent only when you request assistance
+    - No permanent storage of your code
+    - SOC 2 compliant infrastructure
+    - GDPR and CCPA compliant processing
+    
+    **Security Features:**
+    - Encrypted communication (TLS 1.3)
+    - No background code scanning
+    - Request logging for debugging (optional)
+    - Transparent privacy policy
+    
+    **Trust Model:**
+    - Trust Elastic as intermediary
+    - Elastic manages provider relationships
+    - Unified privacy policy across all models
+    - Regular security audits and compliance
+  </Tab>
+  
+  <Tab title="Direct Provider Mode">
+    **You manage provider relationships**
+    
+    **Data Handling:**
+    - Direct communication with each provider
+    - Each provider has own privacy policy
+    - You control data retention settings
+    - Provider-specific compliance requirements
+    
+    **Security Features:**
+    - API keys stored in VSCode secret storage
+    - Direct encrypted connections to providers
+    - No intermediary data processing
+    - You audit each provider relationship
+    
+    **Trust Model:**
+    - Direct trust relationship with each provider
+    - Multiple privacy policies to understand
+    - You manage compliance requirements
+    - Provider-specific security audits needed
+  </Trust>
+</Tabs>
+
+### Performance & Reliability
+
+<AccordionGroup>
+  <Accordion title="Subscription Mode Performance">
+    **Optimized for speed and reliability**
+    
+    **Advantages:**
+    - Load balancing across multiple providers
+    - Automatic failover when providers are down
+    - Optimized routing for fastest response
+    - Cached responses where appropriate
+    - Priority access during high demand
+    
+    **Potential Issues:**
+    - Additional network hop through Elastic
+    - Dependent on Elastic infrastructure
+    - Less control over specific provider selection
+  </Accordion>
+  
+  <Accordion title="Direct Provider Performance">
+    **Direct connection to providers**
+    
+    **Advantages:**
+    - Direct connection to provider APIs
+    - No additional network latency
+    - Full control over retry logic
+    - Can optimize for specific use cases
+    - Direct access to provider status
+    
+    **Potential Issues:**
+    - Manual failover setup required
+    - Provider-specific rate limits
+    - Individual provider outages affect you directly
+    - Need to monitor multiple provider status
+  </Accordion>
+</AccordionGroup>
+
+## Decision Framework
+
+### Choose Subscription Mode If:
+
+<CardGroup cols={1}>
+  <Card title="You Value Simplicity" icon="heart">
+    - Don't want to manage API keys
+    - Prefer unified billing
+    - Want automatic model updates
+    - Need to get started quickly
+  </Card>
+  <Card title="You're Cost-Conscious" icon="dollar-sign">
+    - Want predictable monthly pricing
+    - Prefer transparent usage tracking
+    - Don't want surprise bills from multiple providers
+    - Value included support and features
+  </Card>
+  <Card title="You're a Small Team" icon="users">
+    - Need easy team collaboration
+    - Want shared usage tracking
+    - Prefer centralized billing
+    - Don't have dedicated DevOps resources
+  </Card>
+</CardGroup>
+
+### Choose Direct Provider Mode If:
+
+<CardGroup cols={1}>
+  <Card title="You Need Maximum Control" icon="settings">
+    - Want specific model versions
+    - Need custom parameters
+    - Require provider-specific features
+    - Have complex compliance requirements
+  </Card>
+  <Card title="You're Enterprise-Scale" icon="building">
+    - Have existing provider relationships
+    - Need to audit data flows directly
+    - Require specific SLAs from providers
+    - Have dedicated AI/ML teams
+  </Card>
+  <Card title="You're Cost-Optimizing" icon="chart-line">
+    - Have predictable, high usage patterns
+    - Want to optimize costs across providers
+    - Need detailed usage analytics per provider
+    - Can manage multiple billing relationships
+  </Card>
+</CardGroup>
+
+## Switching Between Modes
+
+You can switch between subscription and direct provider modes at any time:
+
+<Steps>
+  <Step title="Backup Settings">
+    Export your current configuration before switching
+  </Step>
+  <Step title="Choose New Mode">
+    Access settings and select your preferred authentication method
+  </Step>
+  <Step title="Configure Credentials">
+    Set up either subscription or API keys as needed
+  </Step>
+  <Step title="Test Configuration">
+    Verify everything works with a test request
+  </Step>
+</Steps>
+
+<Note>
+  Your conversation history and custom instructions remain intact when switching between modes.
+</Note>
+
+## Recommendations by Use Case
+
+<AccordionGroup>
+  <Accordion title="Individual Developers">
+    **Recommended: Subscription Mode**
+    
+    - Quick setup gets you coding faster
+    - Predictable monthly costs
+    - No API key management overhead
+    - Automatic access to new models
+  </Accordion>
+  
+  <Accordion title="Small Teams (2-10 developers)">
+    **Recommended: Subscription Mode**
+    
+    - Easy team billing and management
+    - Shared usage tracking
+    - No need to distribute API keys
+    - Simplified onboarding for new team members
+  </Accordion>
+  
+  <Accordion title="Large Teams/Enterprises">
+    **Consider: Direct Provider Mode**
+    
+    - Better cost control at scale
+    - Compliance and audit requirements
+    - Existing provider relationships
+    - Custom model requirements
+  </Accordion>
+  
+  <Accordion title="AI/ML-Focused Organizations">
+    **Recommended: Direct Provider Mode**
+    
+    - Need latest experimental models
+    - Require specific model parameters
+    - Want direct provider relationships
+    - Have expertise to manage complexity
+  </Accordion>
+</AccordionGroup>
+
+## Getting Started
+
+<CardGroup cols={2}>
+  <Card title="Try Subscription Mode" icon="rocket" href="/authentication">
+    Start with the easiest option - you can always switch later
+  </Card>
+  <Card title="Configure Direct Providers" icon="key" href="/configuration/api-providers">
+    Set up your own API keys for maximum control
+  </Card>
+</CardGroup> 

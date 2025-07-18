@@ -1,0 +1,161 @@
+---
+title: Chat & Build
+---
+
+Elastic Copilot offers two distinct modes of interaction to accommodate different development workflows and preferences. Whether you want to discuss and plan your approach or dive straight into implementation, Elastic Copilot adapts to your working style.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Chat Mode">
+    Interactive conversation for exploration, planning, and discussion
+  </Card>
+  <Card title="Build Mode">
+    Direct implementation with autonomous task execution
+  </Card>
+</CardGroup>
+
+## Chat Mode
+
+Chat mode provides a conversational interface where you can:
+
+- **Explore Ideas**: Discuss potential approaches and solutions
+- **Ask Questions**: Get explanations about code, concepts, or implementation details
+- **Plan Architecture**: Design system architecture and discuss trade-offs
+- **Code Reviews**: Get feedback on existing code and improvement suggestions
+- **Learning**: Understand complex topics through interactive dialogue
+
+### Key Features
+
+- **Natural Conversation**: Engage in back-and-forth discussions
+- **Context Awareness**: Maintains conversation context across multiple exchanges
+- **Code Explanations**: Detailed explanations of code functionality
+- **Best Practices**: Guidance on coding standards and patterns
+- **Problem Solving**: Collaborative approach to finding solutions
+
+### When to Use Chat Mode
+
+Choose Chat mode when you want to:
+- Understand existing code before making changes
+- Explore different implementation approaches
+- Get explanations for complex concepts
+- Plan major architectural changes
+- Collaborate on problem-solving
+
+## Build Mode
+
+Build mode is designed for direct implementation and autonomous task execution:
+
+- **Autonomous Execution**: AI takes initiative to complete tasks
+- **File Operations**: Creates, modifies, and manages files directly
+- **Multi-step Tasks**: Handles complex workflows that require multiple actions
+- **Tool Integration**: Leverages available tools and integrations
+- **Progress Tracking**: Monitors and reports on task completion
+
+### Key Features
+
+- **Direct Implementation**: AI writes and modifies code directly
+- **Task Management**: Breaks down complex tasks into manageable steps
+- **Error Handling**: Automatically detects and fixes common issues
+- **Testing Integration**: Runs tests and validates implementations
+- **Documentation**: Generates relevant documentation alongside code
+
+### When to Use Build Mode
+
+Choose Build mode when you want to:
+- Implement specific features quickly
+- Refactor existing code
+- Set up new projects or components
+- Automate repetitive development tasks
+- Execute well-defined implementation plans
+
+## Mode Switching
+
+You can seamlessly switch between modes using the toggle control in the interface:
+
+### Toggle Control
+Use the Chat/Build toggle button to switch between modes:
+- **Chat Mode**: Toggle to the left for conversational interaction
+- **Build Mode**: Toggle to the right for direct implementation
+
+### Mode Context
+The current mode affects how Elastic Copilot interprets and responds to your requests:
+- In **Chat Mode**: Responses focus on explanation, discussion, and guidance
+- In **Build Mode**: Responses focus on direct implementation and task execution
+
+## Sample Workflow Guide
+
+### Planning and Implementation Workflow
+
+1. **Start with Chat Mode**
+   - Discuss requirements and constraints
+   - Explore different implementation approaches
+   - Plan the overall architecture
+
+2. **Switch to Build Mode**
+   - Implement the planned solution
+   - Create necessary files and components
+   - Set up tests and configuration
+
+3. **Return to Chat Mode**
+   - Review the implementation
+   - Discuss potential improvements
+   - Plan next steps
+
+### Example: Adding a New Feature
+
+**Chat Phase:**
+```
+User: "I need to add user authentication to my app. What's the best approach?"
+AI: "Let's discuss the requirements. Do you need social login, email/password, or both?..."
+```
+
+**Build Phase:**
+```
+User: "Let's implement JWT-based authentication with email/password"
+AI: "I'll create the authentication system with the following components..."
+[AI creates auth routes, middleware, database models, etc.]
+```
+
+**Review Phase:**
+```
+User: "Can you explain how the JWT token refresh works?"
+AI: "The refresh mechanism works by..."
+```
+
+## Best Practices
+
+### Effective Chat Mode Usage
+
+- **Be Specific**: Ask detailed questions to get precise answers
+- **Provide Context**: Share relevant code snippets or project details
+- **Iterate**: Build on previous responses to refine understanding
+- **Explore Alternatives**: Ask about different approaches and trade-offs
+
+### Effective Build Mode Usage
+
+- **Clear Requirements**: Provide specific implementation requirements
+- **Define Scope**: Clearly outline what should be built
+- **Review Results**: Check the implementation and provide feedback
+- **Test Integration**: Verify that new code works with existing systems
+
+### Mode Selection Guidelines
+
+| Scenario | Recommended Mode | Why |
+|----------|------------------|-----|
+| Learning new concepts | Chat | Interactive explanation and Q&A |
+| Exploring architecture options | Chat | Discussion of pros/cons |
+| Implementing known solution | Build | Direct, efficient implementation |
+| Debugging complex issues | Chat | Collaborative problem-solving |
+| Refactoring existing code | Build | Systematic code transformation |
+| Code review and feedback | Chat | Detailed analysis and discussion |
+
+## Tips for Success
+
+1. **Start Conversations Clearly**: Begin with context about your project and goals
+2. **Use Both Modes**: Leverage Chat for planning and Build for implementation
+3. **Provide Feedback**: Help the AI understand your preferences and requirements
+4. **Iterate**: Don't hesitate to refine and improve solutions
+5. **Ask Questions**: Use Chat mode to understand implementations created in Build mode
+
+The flexibility of Chat & Build modes ensures that Elastic Copilot can adapt to your preferred development workflow, whether you're a planner who likes to discuss before implementing, or someone who prefers to dive straight into building solutions. 

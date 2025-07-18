@@ -1,0 +1,245 @@
+---
+title: "URL Mentions"
+description: "Reference web content including documentation, GitHub issues, and online resources"
+---
+
+URL mentions let you reference web content using `@https://example.com` syntax. When you mention a URL, Elastic fetches and sees the complete webpage content, perfect for referencing documentation, GitHub issues, Stack Overflow answers, or any online resource.
+
+## How URL Mentions Work
+
+When you type `@` followed by a URL in the chat input, Elastic:
+
+- **Fetches the webpage** - Downloads the complete content
+- **Parses the content** - Extracts text, code, and structure
+- **Preserves formatting** - Maintains important formatting and structure
+- **Includes metadata** - Title, description, and other relevant information
+
+## Syntax
+
+```
+@https://example.com
+@http://example.com
+@https://example.com/path/to/page
+```
+
+Examples:
+- `@https://docs.react.dev/learn/getting-started`
+- `@https://github.com/user/repo/issues/123`
+- `@https://stackoverflow.com/questions/12345`
+- `@https://developer.mozilla.org/en-US/docs/Web/API`
+
+## What Elastic Sees
+
+When you mention a URL, Elastic receives:
+
+1. **Complete webpage content** - All text and code on the page
+2. **Page title and metadata** - SEO and descriptive information
+3. **Structured content** - Headers, lists, code blocks, and formatting
+4. **Links and references** - Related resources and navigation
+5. **Code examples** - Syntax-highlighted code snippets
+6. **Documentation structure** - Organized information hierarchy
+
+## Best Practices
+
+### When to Use URL Mentions
+
+- **Documentation reference**: `@https://docs.example.com How do I implement this?`
+- **Issue tracking**: `@https://github.com/user/repo/issues/123 Help with this bug`
+- **Learning resources**: `@https://tutorial.example.com Explain this concept`
+- **API documentation**: `@https://api.example.com/docs Use this API endpoint`
+- **Stack Overflow**: `@https://stackoverflow.com/questions/123 Similar to this question`
+
+### Combining with File Mentions
+
+Connect online resources to your code:
+
+```
+@https://docs.react.dev/hooks @/src/components/UserProfile.tsx 
+Implement this React hook pattern
+```
+
+### Combining with Problem Mentions
+
+Get help with specific issues:
+
+```
+@https://github.com/library/issues/456 @problems 
+This GitHub issue relates to my current errors
+```
+
+## Types of Web Content
+
+### Documentation Sites
+- **Official docs**: Framework and library documentation
+- **API references**: Endpoint and method documentation
+- **Tutorials**: Step-by-step guides and examples
+- **Best practices**: Recommended approaches and patterns
+
+### GitHub Resources
+- **Issues**: Bug reports and feature requests
+- **Pull requests**: Code changes and discussions
+- **README files**: Project documentation
+- **Wiki pages**: Extended documentation
+
+### Learning Resources
+- **Stack Overflow**: Q&A and solutions
+- **Blog posts**: Technical articles and tutorials
+- **Medium articles**: Development insights
+- **Dev.to posts**: Community content
+
+### Reference Materials
+- **MDN Web Docs**: Web standards and APIs
+- **Language specs**: Official language documentation
+- **RFCs**: Technical specifications
+- **Standards documents**: W3C, IETF, etc.
+
+## Common URL Mention Scenarios
+
+### Learning New Technologies
+```
+@https://docs.svelte.dev/introduction 
+Help me understand Svelte basics
+```
+
+### Debugging Issues
+```
+@https://github.com/facebook/react/issues/12345 
+I'm having the same problem as this issue
+```
+
+### Implementing Features
+```
+@https://stripe.com/docs/payments/accept-a-payment 
+Implement Stripe payment processing
+```
+
+### Following Tutorials
+```
+@https://nextjs.org/learn/basics/create-nextjs-app 
+Walk through this Next.js tutorial
+```
+
+### API Integration
+```
+@https://docs.github.com/en/rest/repos/repos 
+Use the GitHub API to list repositories
+```
+
+## Tips for Effective URL Mentions
+
+1. **Use specific URLs**: Link to exact pages, not just homepages
+2. **Include context**: Explain what you want to do with the content
+3. **Combine strategically**: Mix with file mentions for implementation
+4. **Check accessibility**: Ensure URLs are publicly accessible
+5. **Be patient**: Large pages might take time to fetch
+
+## Integration with Memory Bank
+
+URL mentions help Elastic learn:
+
+- **Your preferred resources**: Documentation sites you frequently use
+- **Learning patterns**: How you research and implement features
+- **Problem-solving approach**: Your debugging and research methods
+- **Technology preferences**: Frameworks and tools you work with
+
+## Advanced URL Use Cases
+
+### Comparative Analysis
+```
+@https://reactjs.org/docs/hooks-intro.html @https://vuejs.org/guide/composition-api.html 
+Compare React hooks to Vue composition API
+```
+
+### Implementation Planning
+```
+@https://docs.aws.amazon.com/lambda/ @/src/api/ 
+Plan migration to AWS Lambda
+```
+
+### Security Research
+```
+@https://owasp.org/www-project-top-ten/ @/src/auth/ 
+Review authentication security
+```
+
+### Performance Optimization
+```
+@https://web.dev/performance/ @/src/components/ 
+Optimize component performance
+```
+
+### Standards Compliance
+```
+@https://www.w3.org/WAI/WCAG21/quickref/ @/src/ui/ 
+Ensure accessibility compliance
+```
+
+## Combining with Other Mentions
+
+### With File Mentions
+```
+@https://docs.example.com/api @/src/api/client.js 
+Implement this API client pattern
+```
+
+### With Folder Mentions
+```
+@https://testing-library.com/docs/ @/tests/ 
+Improve the testing setup
+```
+
+### With Problem Mentions
+```
+@https://github.com/library/issues/789 @problems 
+This issue explains my current errors
+```
+
+### With Terminal Mentions
+```
+@https://docs.npmjs.com/cli/install @terminal 
+The npm install is failing as described here
+```
+
+## URL Mention Limitations
+
+### Content Accessibility
+- **Authentication required**: Some pages need login
+- **Paywalls**: Premium content might be blocked
+- **Rate limiting**: Some sites limit automated access
+- **Geographic restrictions**: Regional content blocking
+
+### Content Types
+- **Dynamic content**: JavaScript-heavy sites might not load fully
+- **PDF documents**: May have limited text extraction
+- **Media files**: Images and videos are typically excluded
+- **Large files**: Very large pages might be truncated
+
+### Privacy and Security
+- **Internal URLs**: Company-internal links won't be accessible
+- **Sensitive content**: Be careful with confidential information
+- **Malicious sites**: Avoid suspicious or harmful URLs
+
+## Troubleshooting URL Mentions
+
+### URL Not Loading
+If `@https://example.com` doesn't work:
+- Check if the URL is publicly accessible
+- Verify the URL is correct and complete
+- Try accessing the URL in your browser
+- Check for authentication requirements
+
+### Incomplete Content
+If content seems limited:
+- Try more specific page URLs
+- Check if the page requires JavaScript
+- Look for alternative documentation sources
+- Use direct links to specific sections
+
+### Slow Loading
+If URL mentions are slow:
+- Large pages take time to fetch
+- Complex sites might have delays
+- Try more specific URLs
+- Consider breaking into smaller requests
+
+URL mentions are powerful for bringing external knowledge into your conversations with Elastic, enabling you to reference documentation, issues, and learning resources directly in your development workflow. 

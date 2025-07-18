@@ -1,0 +1,225 @@
+---
+---
+
+# Code Understanding
+
+Elastic Copilot uses advanced tool-based analysis to understand your codebase without requiring manual indexing or setup. This intelligent system provides deep insights into your project structure, dependencies, and code patterns.
+
+## How Code Understanding Works
+
+Unlike traditional approaches that rely on pre-indexing, Elastic Copilot analyzes your code on-demand using a sophisticated tool system:
+
+<CardGroup cols={2}>
+  <Card title="Tree-Sitter Parsing" icon="tree">
+    **Language-aware parsing**
+    - Supports 15+ programming languages
+    - Extracts functions, classes, and structures
+    - Understands syntax and semantics
+  </Card>
+  <Card title="Dynamic Analysis" icon="magnifying-glass">
+    **On-demand exploration**
+    - Reads files as needed
+    - Follows imports and dependencies
+    - Maps project architecture
+  </Card>
+  <Card title="Context Gathering" icon="puzzle-piece">
+    **Intelligent context building**
+    - Identifies related code sections
+    - Understands cross-file relationships
+    - Builds contextual understanding
+  </Card>
+  <Card title="Pattern Recognition" icon="pattern">
+    **Code pattern analysis**
+    - Recognizes common frameworks
+    - Identifies design patterns
+    - Understands project conventions
+  </Card>
+</CardGroup>
+
+## Supported Languages
+
+Elastic Copilot provides intelligent analysis for multiple programming languages:
+
+<Tabs>
+  <Tab title="Web Development">
+    - **JavaScript/TypeScript** - Full ES6+ support, JSX, Vue, Angular
+    - **HTML/CSS** - Modern web standards, preprocessors
+    - **Python** - Flask, Django, FastAPI frameworks
+    - **PHP** - Laravel, Symfony, WordPress
+  </Tab>
+  
+  <Tab title="System Programming">
+    - **Rust** - Cargo projects, async/await patterns
+    - **Go** - Modules, goroutines, channels
+    - **C/C++** - Modern standards, CMake projects
+    - **C#** - .NET Core, Entity Framework
+  </Tab>
+  
+  <Tab title="Mobile & Other">
+    - **Swift** - iOS development, SwiftUI
+    - **Kotlin** - Android development, coroutines
+    - **Java** - Spring Boot, Maven/Gradle
+    - **Ruby** - Rails, gems, modules
+  </Tab>
+</Tabs>
+
+## Analysis Capabilities
+
+### Project Structure Understanding
+
+Elastic Copilot automatically identifies:
+
+<AccordionGroup>
+  <Accordion title="Framework Detection">
+    - **Frontend**: React, Vue, Angular, Svelte
+    - **Backend**: Express, Django, Rails, Spring
+    - **Mobile**: React Native, Flutter, Ionic
+    - **Desktop**: Electron, Tauri, Qt
+  </Accordion>
+  
+  <Accordion title="Architecture Patterns">
+    - MVC, MVP, MVVM patterns
+    - Microservices architecture
+    - Monorepo structures
+    - Plugin/extension systems
+  </Accordion>
+  
+  <Accordion title="Build Systems">
+    - Package managers (npm, pip, cargo, etc.)
+    - Build tools (webpack, vite, rollup)
+    - Task runners (gulp, grunt, make)
+    - CI/CD configurations
+  </Accordion>
+</AccordionGroup>
+
+### Code Relationship Mapping
+
+<Steps>
+  <Step title="Import Analysis">
+    Tracks how modules and files depend on each other
+  </Step>
+  <Step title="Function Calls">
+    Maps function calls and method invocations across files
+  </Step>
+  <Step title="Data Flow">
+    Understands how data moves through your application
+  </Step>
+  <Step title="API Contracts">
+    Identifies interfaces between different parts of your system
+  </Step>
+</Steps>
+
+## Tools Used for Analysis
+
+Elastic Copilot employs several specialized tools for code understanding:
+
+### File Operations
+- **`read_file`** - Reads and analyzes individual files
+- **`list_files`** - Explores directory structures
+- **`search_files`** - Finds patterns and references across the codebase
+
+### Code Analysis
+- **`list_code_definition_names`** - Extracts functions, classes, and structures using tree-sitter
+- **Tree-sitter parsing** - Language-specific syntax analysis
+- **Dependency tracking** - Follows imports and module relationships
+
+### Dynamic Exploration
+- **On-demand loading** - Loads files only when needed for context
+- **Smart caching** - Remembers analysis results during conversation
+- **Context expansion** - Automatically includes related files when relevant
+
+## Context-Aware Features
+
+### Intelligent Code Completion
+
+```javascript
+// Elastic Copilot understands your project context
+function calculateUserMetrics(user) {
+  // It knows about your User model, database structure,
+  // and existing analytics functions
+  |
+}
+```
+
+## Privacy and Performance
+
+<AccordionGroup>
+  <Accordion title="On-Demand Analysis">
+    - Files are analyzed only when you request assistance
+    - No background scanning or indexing
+    - Analysis results are cached only during active conversations
+  </Accordion>
+  
+  <Accordion title="Selective Context">
+    - Only relevant code sections are analyzed
+    - You control what code is shared with AI models
+    - Context is built incrementally as needed
+  </Accordion>
+  
+  <Accordion title="Local Processing">
+    - Tree-sitter parsing happens locally in VSCode
+    - File reading and searching occur on your machine
+    - Only necessary context is sent to AI models
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+### Maximizing Understanding
+
+<Tip>
+  **Use descriptive file and function names** - This helps Elastic Copilot understand the purpose and context of your code.
+</Tip>
+
+<Tip>
+  **Maintain clear project structure** - Well-organized projects are easier for AI to understand and navigate.
+</Tip>
+
+<Tip>
+  **Include documentation** - README files, comments, and documentation help provide additional context.
+</Tip>
+
+### Working with Large Codebases
+
+<Steps>
+  <Step title="Start Specific">
+    Begin conversations with specific files or functions rather than asking about the entire project
+  </Step>
+  <Step title="Use @ Mentions">
+    Use @ mentions to reference specific files, folders, and terminal output for focused context
+  </Step>
+  <Step title="Build Incrementally">
+    Ask follow-up questions to expand understanding to related areas
+  </Step>
+</Steps>
+
+## Common Use Cases
+
+<CardGroup cols={1}>
+  <Card title="Project Onboarding" icon="user-plus" href="#project-onboarding">
+    "Help me understand this codebase" - Get an overview of a new project
+  </Card>
+  <Card title="Code Navigation" icon="map" href="#code-navigation">
+    "Where is the user authentication handled?" - Find specific functionality
+  </Card>
+  <Card title="Impact Analysis" icon="sitemap" href="#impact-analysis">
+    "What would break if I change this function?" - Understand dependencies
+  </Card>
+  <Card title="Refactoring Guidance" icon="arrows-rotate" href="#refactoring">
+    "How should I restructure this module?" - Get architectural advice
+  </Card>
+</CardGroup>
+
+## Limitations and Considerations
+
+<Warning>
+  **Binary Files**: Elastic Copilot cannot analyze compiled binaries, images, or other non-text files.
+</Warning>
+
+<Warning>
+  **Very Large Files**: Files over 10MB may have limited analysis to maintain performance.
+</Warning>
+
+<Note>
+  **Generated Code**: Auto-generated files (like bundled JavaScript) may provide less useful context than source files.
+</Note> 

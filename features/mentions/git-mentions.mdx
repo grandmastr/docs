@@ -1,0 +1,249 @@
+---
+title: "Git Mentions"
+description: "Reference git changes, commits, and repository information"
+---
+
+Git mentions let you reference git-related information using `@git-changes` for uncommitted changes or `@[commit-hash]` for specific commits. When you mention git information, Elastic sees complete diffs, commit messages, and other relevant repository information.
+
+## How Git Mentions Work
+
+Git mentions provide different types of repository context:
+
+- **Uncommitted changes**: `@git-changes` shows all modified files
+- **Specific commits**: `@[commit-hash]` shows commit details
+- **Branch information**: Context about current branch and status
+- **Diff information**: Complete file changes and modifications
+
+## Syntax
+
+### Uncommitted Changes
+```
+@git-changes
+```
+
+### Specific Commits
+```
+@[commit-hash]
+@[short-hash]
+```
+
+Examples:
+- `@git-changes` - All uncommitted modifications
+- `@[a1b2c3d]` - Specific commit by hash
+- `@[a1b2c3d4e5f6]` - Full commit hash
+
+## What Elastic Sees
+
+### For Uncommitted Changes (`@git-changes`)
+1. **Modified files** - All files with changes
+2. **Complete diffs** - Line-by-line changes
+3. **Added files** - New files in the repository
+4. **Deleted files** - Files removed from the repository
+5. **Staged vs unstaged** - Status of changes
+
+### For Specific Commits (`@[hash]`)
+1. **Commit message** - Full commit description
+2. **Author information** - Who made the commit
+3. **Timestamp** - When the commit was made
+4. **File changes** - Complete diff of the commit
+5. **Parent commits** - Commit history context
+
+## Best Practices
+
+### When to Use Git Mentions
+
+- **Code review**: `@git-changes Review my recent changes`
+- **Commit preparation**: `@git-changes Help me write a good commit message`
+- **Bug investigation**: `@[abc123] This commit introduced a bug`
+- **Feature analysis**: `@git-changes Explain what this feature does`
+- **Merge conflicts**: `@git-changes Help resolve these conflicts`
+
+### Combining with File Mentions
+
+Target specific files in your changes:
+
+```
+@git-changes @/src/auth.js 
+Review the authentication changes
+```
+
+### Combining with Problem Mentions
+
+Check if changes introduce issues:
+
+```
+@git-changes @problems 
+Do my changes cause any new errors?
+```
+
+## Common Git Scenarios
+
+### Pre-commit Review
+```
+@git-changes 
+Review my changes before I commit
+```
+
+### Commit Message Help
+```
+@git-changes 
+Help me write a good commit message for these changes
+```
+
+### Bug Investigation
+```
+@[a1b2c3d] 
+This commit seems to have introduced a bug
+```
+
+### Feature Understanding
+```
+@git-changes 
+Explain what this new feature does
+```
+
+### Merge Conflict Resolution
+```
+@git-changes 
+Help me resolve these merge conflicts
+```
+
+## Types of Git Information
+
+### File Status
+- **Modified**: Files with changes
+- **Added**: New files
+- **Deleted**: Removed files
+- **Renamed**: Files moved or renamed
+- **Copied**: Files duplicated
+
+### Change Types
+- **Additions**: New lines of code
+- **Deletions**: Removed lines
+- **Modifications**: Changed lines
+- **Moves**: File relocations
+- **Permission changes**: File mode updates
+
+### Repository Context
+- **Current branch**: Active branch name
+- **Commit history**: Recent commits
+- **Remote status**: Sync with remote repository
+- **Stash information**: Saved changes
+
+## Tips for Effective Git Mentions
+
+1. **Review before committing**: Use `@git-changes` to review all changes
+2. **Investigate specific commits**: Use commit hashes to understand changes
+3. **Combine with other mentions**: Add file or problem mentions for context
+4. **Check for conflicts**: Ensure changes don't introduce issues
+5. **Document changes**: Get help writing clear commit messages
+
+## Integration with Memory Bank
+
+Git mentions help Elastic understand:
+
+- **Your coding patterns**: How you make changes
+- **Commit style**: Your preferred commit message format
+- **Development workflow**: How you use git in your process
+- **Code evolution**: How your project changes over time
+
+## Advanced Git Use Cases
+
+### Release Preparation
+```
+@git-changes 
+Prepare a changelog for these changes
+```
+
+### Code History Analysis
+```
+@[commit1] @[commit2] 
+Compare these two commits
+```
+
+### Refactoring Review
+```
+@git-changes 
+Is this refactoring safe and complete?
+```
+
+### Performance Impact
+```
+@git-changes 
+Will these changes affect performance?
+```
+
+### Security Review
+```
+@git-changes 
+Check these changes for security issues
+```
+
+## Combining with Other Mentions
+
+### With File Mentions
+```
+@git-changes @/src/api/auth.js 
+Review the authentication changes
+```
+
+### With Folder Mentions
+```
+@git-changes @/components/ 
+What component changes did I make?
+```
+
+### With Terminal Mentions
+```
+@git-changes @terminal 
+The git commands are showing these results
+```
+
+### With Problem Mentions
+```
+@git-changes @problems 
+Do my changes fix the existing issues?
+```
+
+## Git Mention Limitations
+
+### Large Changes
+- Very large diffs might be summarized
+- Focus on the most important changes
+- Use file mentions to target specific areas
+
+### Binary Files
+- Binary file changes are typically excluded
+- Focus on text-based changes
+- Mention specific binary files if needed
+
+### Sensitive Information
+- Be careful with commits containing:
+  - API keys or secrets
+  - Personal information
+  - Internal system details
+
+## Troubleshooting Git Mentions
+
+### No Git Changes
+If `@git-changes` shows nothing:
+- Check if you have uncommitted changes
+- Verify you're in a git repository
+- Make sure files are tracked by git
+- Try `git status` to confirm changes
+
+### Commit Not Found
+If `@[hash]` doesn't work:
+- Verify the commit hash is correct
+- Check if the commit exists in current branch
+- Try the full commit hash instead of short version
+- Ensure you're in the correct repository
+
+### Incomplete Information
+If git mentions seem limited:
+- Use specific commit hashes for detailed info
+- Combine with file mentions for context
+- Ask for specific aspects of the changes
+- Break down large changes into smaller parts
+
+Git mentions are essential for code review, commit preparation, and understanding how your codebase evolves over time, making them valuable for maintaining code quality and project history. 
