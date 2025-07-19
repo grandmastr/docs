@@ -61,13 +61,12 @@
     "links": [
       {
         "label": "Login",
-        "href": "https://real.elasticapp.io"
+        "href": "https://elasticapp.ai"
       }
     ]
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/elastic-copilot",
       "linkedin": "https://linkedin.com/company/elastic-copilot"
     }
   }
